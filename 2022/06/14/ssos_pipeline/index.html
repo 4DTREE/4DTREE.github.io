@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/~ljq1999/img/logo.jpeg">
+  <link rel="icon" href="/~ljq1999/img/logo.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="四维树">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ssos pipelinessos是一款命令行程序，使用python3编写，可以从FITS天文图像文件中搜寻从近地天体到柯伊伯带天体的各类太阳系天体。其名称来源于SSOs，即太阳系天体(Solar System Objects)。作者将其源码上传至了github上[1], 提供了在线文档[2]以供参阅，并发表了相关论文[3]。尽管如此，笔者在安装和使用ssos时还是遇到了许多未被提及的问题，本文将">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssos简介">
+<meta property="og:url" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/index.html">
+<meta property="og:site_name" content="四维树的博客站">
+<meta property="og:description" content="ssos pipelinessos是一款命令行程序，使用python3编写，可以从FITS天文图像文件中搜寻从近地天体到柯伊伯带天体的各类太阳系天体。其名称来源于SSOs，即太阳系天体(Solar System Objects)。作者将其源码上传至了github上[1], 提供了在线文档[2]以供参阅，并发表了相关论文[3]。尽管如此，笔者在安装和使用ssos时还是遇到了许多未被提及的问题，本文将">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg">
+<meta property="article:published_time" content="2022-06-14T09:12:34.762Z">
+<meta property="article:modified_time" content="2022-06-14T16:24:49.100Z">
+<meta property="article:author" content="四维树">
+<meta property="article:tag" content="ssos">
+<meta property="article:tag" content="太阳系天体">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg">
+  
+  
+  
+  <title>ssos简介 - 四维树的博客站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/~ljq1999/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/~ljq1999/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/~ljq1999/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"home.ustc.edu.cn","root":"/~ljq1999/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/~ljq1999/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/~ljq1999/js/utils.js" ></script>
+  <script  src="/~ljq1999/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/~ljq1999/">
+      <strong>四维树的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/~ljq1999/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="ssos简介"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-14 17:12" pubdate>
+          2022年6月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工作"
+        id="heading-9a018b21ab114a51dd7b5979198a941b" role="tab" data-toggle="collapse" href="#collapse-9a018b21ab114a51dd7b5979198a941b"
+        aria-expanded="true"
+      >
+        工作
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9a018b21ab114a51dd7b5979198a941b"
+           role="tabpanel" aria-labelledby="heading-9a018b21ab114a51dd7b5979198a941b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ssos"
+        id="heading-f0dda5768267ae759384a13cbf7025ce" role="tab" data-toggle="collapse" href="#collapse-f0dda5768267ae759384a13cbf7025ce"
+        aria-expanded="true"
+      >
+        ssos
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f0dda5768267ae759384a13cbf7025ce"
+           role="tabpanel" aria-labelledby="heading-f0dda5768267ae759384a13cbf7025ce">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_pipeline/" title="ssos简介"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">ssos简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">运行ssos</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ssos"
+        id="heading-f0dda5768267ae759384a13cbf7025ce" role="tab" data-toggle="collapse" href="#collapse-f0dda5768267ae759384a13cbf7025ce"
+        aria-expanded="true"
+      >
+        ssos
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f0dda5768267ae759384a13cbf7025ce"
+           role="tabpanel" aria-labelledby="heading-f0dda5768267ae759384a13cbf7025ce">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_pipeline/" title="ssos简介"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">ssos简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">运行ssos</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">ssos简介</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="ssos-pipeline"><a href="#ssos-pipeline" class="headerlink" title="ssos pipeline"></a>ssos pipeline</h1><p>ssos是一款命令行程序，使用python3编写，可以从FITS天文图像文件中搜寻从近地天体到柯伊伯带天体的各类太阳系天体。其名称来源于SSOs，即太阳系天体(Solar System Objects)。作者将其源码上传至了github上<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://github.com/maxmahlke/ssos
+">[1]</span></a></sup>, 提供了在线文档<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://ssos.readthedocs.io/en/latest/
+">[2]</span></a></sup>以供参阅，并发表了相关论文<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="Mahlke M, et al. Astronomy and Computing, 2019, 28: 100289.
+">[3]</span></a></sup>。尽管如此，笔者在安装和使用ssos时还是遇到了许多未被提及的问题，本文将对此进行说明。</p>
+<h2 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h2><h3 id="安装AstrOmatic套件"><a href="#安装AstrOmatic套件" class="headerlink" title="安装AstrOmatic套件"></a>安装AstrOmatic套件</h3><p>ssos并不直接与FITS文件进行交互，而是使用已有的天文软件处理FITS文件。因此需要自行安装以下三个软件。</p>
+<ul>
+<li><p>SExtractor:   FITS图像源提取</p>
+</li>
+<li><p>SCAMP:   校准天体测量和测光</p>
+</li>
+<li><p>SWarp:   FITS图像叠加和重采样</p>
+</li>
+</ul>
+<p>这三个软件都只是AstrOmatic软件套装的一部分，然而AstrOmatic官网<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.astromatic.net
+">[4]</span></a></sup>上提供的版本很旧，部分链接还存在打不开的情况。最新版本可以在github上AstrOmatic的相关页面<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.astromatic.net
+">[4]</span></a></sup>找到。对于linux用户，上述软件可以使用软件包管理器进行安装。笔者使用Ubuntu系统的apt包管理器进行了安装。</p>
+<h3 id="安装ssos"><a href="#安装ssos" class="headerlink" title="安装ssos"></a>安装ssos</h3><p>ssos是基于python3的，如果系统中没有python3则需自行安装。最新版本的ssos要求python版本<em>≥</em>3.8。Anaconda包含conda、python以及许多安装好的工具包，可以用来创建和管理多个不同的python环境。ssos则可以使用python3的pip命令安装，笔者使用conda创建了一个名为ssos的环境，然后再将ssos程序安装到了此环境中。ssos主要依赖以下python外部库。</p>
+<ul>
+<li><p>astropy:   天文学研究常用扩展库</p>
+</li>
+<li><p>numpy:   科学计算常用扩展库</p>
+</li>
+<li><p>pandas:   数据分析与处理常用扩展库</p>
+</li>
+<li><p>sbpy:   隶属于astropy的小行星和彗星的扩展库</p>
+</li>
+</ul>
+<p>在使用pip安装外部库时，会自动安装相关的其他python外部库。然而笔者发现自己在使用pip安装ssos时，sbpy并没有像另外几个库一样被自动安装，需要单独使用pip安装。</p>
+<h3 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h3><h4 id="验证AstrOmatc套件的安装"><a href="#验证AstrOmatc套件的安装" class="headerlink" title="验证AstrOmatc套件的安装"></a>验证AstrOmatc套件的安装</h4><p>对于SExtractor、SCAMP和SWarp，只需要在终端输入<code>sex</code>、<code>scamp</code>、<code>swarp</code>就能在终端看到相应的版本号和简介等信息。不过，即便已经成功安装，上述命令仍有可能无法运行。主要可能有以下原因：</p>
+<ol>
+<li><p>程序未被添加至环境变量.</p>
+</li>
+<li><p>命令的名称不同。</p>
+</li>
+</ol>
+<p>对于第一种情况，将相应程序添加至环境变量即可，在此不再赘述。<br>对于第二种情况，需要从安装目录下找到对应的程序名称，根据笔者的经验，有时需要在终端输入<code>source-extractor</code>、<code>sextractor</code>、<code>SWarp</code>等才能正确找到相应的程序。建议可以在终端中使用<code>which scamp</code>或者<code>whereis scamp</code>命令先找到scamp的安装目录。但是，由于ssos软件并未考虑到上述软件安装后的默认程序名称并不一定是sex、scamp和swarp。因此虽然你仍然可以使用自己下载后的程序名称来正常使用上述软件，却不能正常地被ssos调用。以sextractor这一名称为例，笔者尝试了以下三种方法：</p>
+<ol>
+<li><p>使用SHELL的<code>alias</code>命令为”sextractor”设置别名”sex”。</p>
+</li>
+<li><p>修改ssos源码，将调用SExtractor的命令中的”sex”替换为”sextractor”。</p>
+</li>
+<li><p>进入SExtractor程序所在目录后，在终端输入<code>ln -s sextractor sex</code>创建软链接（又称符号连接）。</p>
+</li>
+</ol>
+<p>第一种方法只是为当前登录用户临时设置程序别名，如要每次登录自动设置，需要修改shell的配置文件。但问题在于，设置好后，虽然用户在终端可以正常使用<code>sex</code>来调用SExtractor，但ssos在运行的过程中却并不能成功调用。这时ssos会出错，并提示说catalog文件不存在，SCAMP遇到问题，Full catalog没能被创建。这一出错信息具有一定迷惑性，让人以为是SCAMP导致的，然而实际上这是由于ssos没能运行SExtractor导致的。以上情况是由于用户使用终端与python3调用终端的途径并不相同，需要额外的方法使得ssos能够识别用户使用alias命令设置的程序别名。<br>总之，这种方法并不好用，笔者并不推荐。</p>
+<p>第二种方法实测是可行的。然而随便修改源代码听起来让人并不满意，况且要在众多代码行中找到正确的位置进行修改也并不是一个容易借鉴的经验，而且用户自己使用时并不能使用简短的<code>sex</code>命令，因此笔者也不推荐这种方法。</p>
+<p>第三种方法操作简单，对用户终端和python3的调用均有效，是笔者推荐的方法。</p>
+<h4 id="验证ssos的安装"><a href="#验证ssos的安装" class="headerlink" title="验证ssos的安装"></a>验证ssos的安装</h4><p>而对于ssos，同样只需要在终端输入<code>ssos</code>就能看到版本号和简介等信息。但需要注意的是，这一命令的作用仅仅是打印这几行字符而已。因此，成功在终端上看到这一命令的输出只能说明ssos已被正确添加至环境变量，并不能说明你已经安装和设置好了其它相关的软件和python外部库。如果你没能成功运行这一命令，请检查：</p>
+<ol>
+<li><p>是否正确将ssos添加至环境变量。</p>
+</li>
+<li><p>如果是在conda环境中安装的，在运行ssos时是否已切换至对应的conda环境。</p>
+</li>
+</ol>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>首先创建一个文件夹作为ssos的存放配置文件和输出文件的目录。在该文件夹处打开终端，使用<code>ssos --default</code>命令，将会在该目录下生成：</p>
+<ul>
+<li><p>default.ssos</p>
+</li>
+<li><p>semp&#x2F;</p>
+<ul>
+<li><p>ssos.sex</p>
+</li>
+<li><p>ssos.swarp</p>
+</li>
+<li><p>ssos.scamp</p>
+</li>
+<li><p>ssos.param</p>
+</li>
+<li><p>default.nnw</p>
+</li>
+<li><p>gauss_2.5_5x5.conv</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>其中default.ssos是ssos的配置文件，而semp文件夹下则是ssos调用AstrOmatic系列软件时各个软件的配置。其中ssos.param是SExtractor控制其生成的catalog中包含哪些参数的配置文件，default.nnw是SExtractor的恒星&#x2F;星系分类器的神经网络权值，gauss_2.5_5x5.conv则是源提取时的卷积过滤器。查阅SExtractor软件的默认配置文件可以发现，SExtractor提供了多个经典的卷积模板，而ssos只选取了其中最适合暗弱天体探测的高斯卷积核。</p>
+<p>接下来需要根据选用的FITS文件对上述配置文件进行更改，主要是把一些关键词正确地指向FITS图像的对应数据头，具体需要更改的项可以参考ssos的在线文档相关页面<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://ssos.readthedocs.io/en/latest/setup.html
+">[6]</span></a></sup>。除了在线文档上提到的参数外，笔者建议将semp&#x2F;ssos.scamp文件中的ASTREF_CATALOG这一项从默认的GAIA-DR2改为2MASS。这是因为:</p>
+<ol>
+<li><p>如果你的SCAMP版本比较旧，可能并不支持GAIA-DR2查询，从而导致ssos运行时出错。<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span class="hint--top hint--rounded" aria-label="对于Ubuntu系统，需要系统版本大于等于21.04才可以使用apt安装SCAMP  2.10.0(2020-12-01)版本，而小于此系统版本的Ubuntu安装的最高版本是SCAMP  2.0.4(2014-07-09)，这一版本并不支持GAIA-DR2以及ssos.scamp在ASTREF_CATALOG这一项的注释里列出的其它一些选择，如SDSS-R12、PANSTARRS-1等。
+">[7]</span></a></sup></p>
+</li>
+<li><p>2MASS可以提供全天空的近红外图像，而其它巡天项目可能不包含对应天区的图像从而导致ssos程序出错。因此如果是首次运行，建议先使用2MASS尝试。</p>
+</li>
+</ol>
+<h2 id="程序流程"><a href="#程序流程" class="headerlink" title="程序流程"></a>程序流程</h2><p>配置好文件后，将所用到的FITS图像全部放入某一目录，然后在配置文件所在目录打开终端，执行<code>ssos path/to/images</code>命令,即可运行ssos主程序。程序流程图如图所示：</p>
+<img src="/~ljq1999/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg" srcset="/~ljq1999/img/loading.gif" lazyload class="" title="ssos-pipeline-flowchart">
+
+<p>图中虚线框内是ssos程序外部提供的内容：左边一列是需要通过网络在线查询的内容，最上方是待处理的FITS图像，而右边虚线框内是存储在用户本地的可配置的文件。</p>
+<p>ssos pipeline会自动执行以下步骤：</p>
+<h3 id="运行SExtractor"><a href="#运行SExtractor" class="headerlink" title="运行SExtractor"></a>运行SExtractor</h3><p>首先，SExtractor会依据工作目录的semp文件夹下的配置将输入的图片目录下所有FITS图像逐张进行处理，并将检测到的源编目输出为.cat文件。这一步生成的目录将是后续许多步骤的基础，SCAMP和之后python筛选的过程都是对目录文件进行操作而不会再与原图像进行交互。除了基础FITS图像，如果存在相关的权值图像和遮罩图像，SExtractor也会进行读取和相应的处理。详细过程可参考SExtractor的官方在线文档<sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://sextractor.readthedocs.io/en/latest/
+">[8]</span></a></sup>.</p>
+<h3 id="运行SCAMP"><a href="#运行SCAMP" class="headerlink" title="运行SCAMP"></a>运行SCAMP</h3><p>接着，SCAMP会根据工作目录&#x2F;semp&#x2F;ssos.scamp的配置在线查询相应的参考目录，并生成full.cat和merged.cat。这是因为实际观测中，同一片天空的不同图像之间可能存在旋转、平移和放缩。SCAMP可以根据参考目录对此进行校准，并将出现在不同图像中的同一个源进行关联。</p>
+<h3 id="太阳系天体筛选"><a href="#太阳系天体筛选" class="headerlink" title="太阳系天体筛选"></a>太阳系天体筛选</h3><p>然后，ssos会依据工作目录&#x2F;default.ssos的配置对源进行筛选，以下筛选均可自行设置关闭或开启：</p>
+<h4 id="探测次数"><a href="#探测次数" class="headerlink" title="探测次数"></a>探测次数</h4><p>通过排除掉出现次数较少的源，可以有效排除掉图像上由宇宙射线和人造卫星等造成的被错误关联起来的无关的源。此外，随着探测次数的增加，可以对源的运动和形状给出更好的测算，从而减少错误识别。</p>
+<h4 id="自行速度和信噪比"><a href="#自行速度和信噪比" class="headerlink" title="自行速度和信噪比"></a>自行速度和信噪比</h4><p>区分太阳系天体和太阳系以外的源主要特征是太阳系天体的自行<sup id="fnref:9" class="footnote-ref"><a href="#fn:9" rel="footnote"><span class="hint--top hint--rounded" aria-label="天体相对太阳系在垂直于观测者视线方向上的角位移或单位时间内角位移量
+">[9]</span></a></sup>。SCAMP会计算每个源的自行速度，ssos会排除掉信噪比低于设置的PM_SNR参数的源。</p>
+<h4 id="线性运动"><a href="#线性运动" class="headerlink" title="线性运动"></a>线性运动</h4><p>SCAMP在计算源的自行的时候并不会拟合坐标空间中的离群值，因此仍有必要专门对源的运动是否呈线性进行筛选。如果观测时间间隔较长，线性拟合过程很容易给出很高的线性度，但这并不能反映待筛选源在一段间隔较小观测时间内的运动是否呈线性。ssos会根据设定的OUTLIER_THRESHOLD参数检测时域上的离群值，然后将观测进行分组，并对每个子分组进行拟合。如果所有子分组都少于三次探测或未达到要求的线性度，这个源将被排除。</p>
+<h4 id="坏像素"><a href="#坏像素" class="headerlink" title="坏像素"></a>坏像素</h4><p>对于线性漂移的观测模式，CCD上的热像素会表现得像是一个在天空中线性移动的源。不过，坏像素每次都会落在固定的像素位置，而真实的太阳系天体很难如此。二者用SExtrctor计算得到的源的质心都会存在一定弥散，但通过设置一定的阈值，可以有效筛选掉坏像素造成的假源。</p>
+<h4 id="痕迹一致性（默认不启用）"><a href="#痕迹一致性（默认不启用）" class="headerlink" title="痕迹一致性（默认不启用）"></a>痕迹一致性（默认不启用）</h4><p>在相似的观测条件下，同一天体在图像上形成的痕迹的尺寸通常不会产生太大的波动。SExtractor会给出每个源使用椭圆拟合出的半长轴和半短轴，如果尺寸的波动超过了ssos定义的相应的形态参数的不确定性上限，相应的源将会被拒绝。</p>
+<h4 id="靠近亮源"><a href="#靠近亮源" class="headerlink" title="靠近亮源"></a>靠近亮源</h4><p>过于明亮的源的衍射尖峰和鬼影会对前面的筛选过程产生干扰，因此比较稳妥的办法是舍弃那些过于靠近亮源的源。亮源的目录既可以由SCAMP得到，也可以使用用户本地的亮源目录文件。</p>
+<h3 id="可选分析"><a href="#可选分析" class="headerlink" title="可选分析"></a>可选分析</h3><p>ssos执行完前面的步骤，就得到了候选的太阳系天体。<br>除了前述步骤，ssos还提供了其它一些可以在运行pipeline时执行的步骤：</p>
+<h4 id="SkyBot交叉匹配"><a href="#SkyBot交叉匹配" class="headerlink" title="SkyBot交叉匹配"></a>SkyBot交叉匹配</h4><p>SkyBot是IMCCE（天体力学和星历计算研究所）提供的在线星历查询服务<sup id="fnref:10" class="footnote-ref"><a href="#fn:10" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://www.imcce.fr/services/ephemerides/
+">[10]</span></a></sup>之一，用于搜索位于天文图像中的太阳系天体。实际执行过程中，SkyBot查询是放在SExtractor源提取过程之前的。在得到候选的太阳系天体后，会再尝试与SkyBot的查询结果进行交叉匹配。如果匹配成功，会在输出的&#x2F;cats&#x2F;ssos*.csv文件中给出相应的天体名称、种类等信息。</p>
+<h4 id="SWarp生成裁切图像"><a href="#SWarp生成裁切图像" class="headerlink" title="SWarp生成裁切图像"></a>SWarp生成裁切图像</h4><p>对于候选的太阳系天体，SWarp可以将源置于中心裁切出指定大小的FITS图像。这些小图像可方便地用于人工检查。</p>
+<h4 id="计算固定孔径光度（默认不启用）"><a href="#计算固定孔径光度（默认不启用）" class="headerlink" title="计算固定孔径光度（默认不启用）"></a>计算固定孔径光度（默认不启用）</h4><p>使用SExtractor的双图像模式进行源检测，将固定孔径的流量和光度添加至输出中。</p>
+<h2 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h2><p>程序运行结束后，工作目录下会产生许多文件。除去SExtractor和SCAMP在运行过程中产生的文件,ssos会还在工作目录生成以下文件夹：</p>
+<ul>
+<li><p>cats&#x2F;</p>
+</li>
+<li><p>checkplots&#x2F;</p>
+</li>
+<li><p>cutouts&#x2F;</p>
+</li>
+<li><p>logs&#x2F;</p>
+</li>
+<li><p>weights&#x2F;</p>
+</li>
+</ul>
+<p>除了自己查看这些文件夹下包含的文件外，ssos还提供了两条额外的命令方便对这些输出文件进行进一步分析：</p>
+<ol>
+<li><p><code>ssos --inspect path/to/working/folder</code>命令可以将工作目录&#x2F;cutouts下的每个源的FITS图像循环播放，形成一个”动图”。用户对其是否属于太阳系天体做出判断后，可以使用键盘方向键对其快速标记，标记结果会保存到工作目录&#x2F;cats&#x2F;ssos*.csv文件的对应条目中。</p>
+</li>
+<li><p><code>ssos --mpc path/to/output/csv</code>命令则可以根据工作目录&#x2F;cats&#x2F;ssos*.csv文件生成MPC格式<sup id="fnref:11" class="footnote-ref"><a href="#fn:11" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://minorplanetcenter.net//iau/info/OpticalObs.html
+">[11]</span></a></sup>的.txt文件，方便报告给小行星中心。</p>
+</li>
+</ol>
+<hr>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/maxmahlke/ssos">https://github.com/maxmahlke/ssos</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://ssos.readthedocs.io/en/latest/">https://ssos.readthedocs.io/en/latest/</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://doi.org/https://doi.org/10.1016/j.ascom.2019.100289">Mahlke M, et al. Astronomy and Computing, 2019, 28: 100289.</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.astromatic.net/">https://www.astromatic.net</a>
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://github.com/astromatic">https://github.com/astromatic</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://ssos.readthedocs.io/en/latest/setup.html">https://ssos.readthedocs.io/en/latest/setup.html</a>
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:7" class="footnote-text"><span>对于Ubuntu系统，需要系统版本大于等于21.04才可以使用apt安装SCAMP  2.10.0(2020-12-01)版本，而小于此系统版本的Ubuntu安装的最高版本是SCAMP  2.0.4(2014-07-09)，这一版本并不支持GAIA-DR2以及ssos.scamp在ASTREF_CATALOG这一项的注释里列出的其它一些选择，如SDSS-R12、PANSTARRS-1等。
+<a href="#fnref:7" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:8" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://sextractor.readthedocs.io/en/latest/">https://sextractor.readthedocs.io/en/latest/</a>
+<a href="#fnref:8" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:9" class="footnote-text"><span>天体相对太阳系在垂直于观测者视线方向上的角位移或单位时间内角位移量
+<a href="#fnref:9" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:10" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.imcce.fr/services/ephemerides/">https://www.imcce.fr/services/ephemerides/</a>
+<a href="#fnref:10" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:11" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://minorplanetcenter.net//iau/info/OpticalObs.html">https://minorplanetcenter.net//iau/info/OpticalObs.html</a>
+<a href="#fnref:11" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/~ljq1999/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
+  
+  
+    <span>></span>
+    
+  <a href="/~ljq1999/categories/%E5%B7%A5%E4%BD%9C/ssos/" class="category-chain-item">ssos</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/~ljq1999/tags/ssos/">#ssos</a>
+      
+        <a href="/~ljq1999/tags/%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%A4%A9%E4%BD%93/">#太阳系天体</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>ssos简介</div>
+      <div>http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>四维树</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月14日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">运行ssos</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/~ljq1999/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="人工智能概览">
+                        <span class="hidden-mobile">人工智能概览</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/~ljq1999/js/events.js" ></script>
+<script  src="/~ljq1999/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/~ljq1999/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/~ljq1999/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/~ljq1999/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

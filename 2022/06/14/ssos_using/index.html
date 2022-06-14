@@ -1,0 +1,927 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/~ljq1999/img/logo.jpeg">
+  <link rel="icon" href="/~ljq1999/img/logo.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="四维树">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="运行结果笔者使用的FITS图像均来自ZTF的Twillight Survey。所挑选的目标天体均属于Atira类小行星。 简单测试首先我在Ubuntu虚拟机上安装了ssos。为了测试ssos能否正常运行，我选用了ZTF对小行星2020 AV2最初观测到的四张FITS图像进行测试。 2020 AV2是目前已知的唯一的Vatira类小行星。它很可能起源于主带,可能将继续作为Vatira在轨道上运转数十">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运行ssos">
+<meta property="og:url" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_using/index.html">
+<meta property="og:site_name" content="四维树的博客站">
+<meta property="og:description" content="运行结果笔者使用的FITS图像均来自ZTF的Twillight Survey。所挑选的目标天体均属于Atira类小行星。 简单测试首先我在Ubuntu虚拟机上安装了ssos。为了测试ssos能否正常运行，我选用了ZTF对小行星2020 AV2最初观测到的四张FITS图像进行测试。 2020 AV2是目前已知的唯一的Vatira类小行星。它很可能起源于主带,可能将继续作为Vatira在轨道上运转数十">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_using/2020AV2.jpg">
+<meta property="og:image" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_using/2004JG6.jpg">
+<meta property="article:published_time" content="2022-06-14T09:14:43.291Z">
+<meta property="article:modified_time" content="2022-06-14T16:32:35.960Z">
+<meta property="article:author" content="四维树">
+<meta property="article:tag" content="ssos">
+<meta property="article:tag" content="太阳系天体">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_using/2020AV2.jpg">
+  
+  
+  
+  <title>运行ssos - 四维树的博客站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/~ljq1999/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/~ljq1999/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/~ljq1999/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"home.ustc.edu.cn","root":"/~ljq1999/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/~ljq1999/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/~ljq1999/js/utils.js" ></script>
+  <script  src="/~ljq1999/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/~ljq1999/">
+      <strong>四维树的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/~ljq1999/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/~ljq1999/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="运行ssos"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-14 17:14" pubdate>
+          2022年6月14日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          67 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工作"
+        id="heading-9a018b21ab114a51dd7b5979198a941b" role="tab" data-toggle="collapse" href="#collapse-9a018b21ab114a51dd7b5979198a941b"
+        aria-expanded="true"
+      >
+        工作
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-9a018b21ab114a51dd7b5979198a941b"
+           role="tabpanel" aria-labelledby="heading-9a018b21ab114a51dd7b5979198a941b">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ssos"
+        id="heading-f0dda5768267ae759384a13cbf7025ce" role="tab" data-toggle="collapse" href="#collapse-f0dda5768267ae759384a13cbf7025ce"
+        aria-expanded="true"
+      >
+        ssos
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f0dda5768267ae759384a13cbf7025ce"
+           role="tabpanel" aria-labelledby="heading-f0dda5768267ae759384a13cbf7025ce">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_pipeline/" title="ssos简介"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ssos简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">运行ssos</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="ssos"
+        id="heading-f0dda5768267ae759384a13cbf7025ce" role="tab" data-toggle="collapse" href="#collapse-f0dda5768267ae759384a13cbf7025ce"
+        aria-expanded="true"
+      >
+        ssos
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-f0dda5768267ae759384a13cbf7025ce"
+           role="tabpanel" aria-labelledby="heading-f0dda5768267ae759384a13cbf7025ce">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_pipeline/" title="ssos简介"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">ssos简介</span>
+        </a>
+      
+    
+      
+      
+        <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">运行ssos</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">运行ssos</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h1><p>笔者使用的FITS图像均来自ZTF的Twillight Survey。所挑选的目标天体均属于Atira类小行星。</p>
+<h2 id="简单测试"><a href="#简单测试" class="headerlink" title="简单测试"></a>简单测试</h2><p>首先我在Ubuntu虚拟机上安装了ssos。为了测试ssos能否正常运行，我选用了ZTF对小行星2020 AV2最初观测到的四张FITS图像进行测试。 2020 AV2是目前已知的唯一的Vatira类小行星。它很可能起源于主带,可能将继续作为Vatira在轨道上运转数十万年，之后受金星作用跑出金星轨道以外<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="Greenstreet S. Monthly Notices of the Royal Astronomical Society: Letters, 2020 ,493(1): L129–L131.
+">[1]</span></a></sup>。在解决了最初由于安装环境和初始设置带来的一些问题后，ssos成功给出了两个候选SSOs，其中1个成功与SkyBot查询结果匹配，而这一个正是2020 AV2， 如图(SWarp 以 2020 AV2 为中心裁剪出的图像)：</p>
+<img src="/~ljq1999/2022/06/14/ssos_using/2020AV2.jpg" srcset="/~ljq1999/img/loading.gif" lazyload class="" title="SWarp以2020 AV2为中心裁剪出的图像">
+
+<p>注:这四张图是从 ssos的inspect功能产生的动图中截屏得到的，ssos 在显示图中的坐标时存在错误，实际上这四幅图每相邻两幅图的中心点赤经变化约 11.6”，赤纬变化约 11.4”，而图中的背景天空明显移动了，坐标轴上的数值却丝毫未变。</p>
+<p>而另一个候选SSOs在不同设置下的结果有时并不相同，且并不能看出相对背景产生明显移动的物体，应当属于程序错误给出的SSOs候选体。</p>
+<p>之后，为了下一步的模拟运行，我在Ubuntu服务器上搭建好环境后重新跑了一遍2020AV2的四张FITS科学图像，程序却意外报错了。错误信息指向了赤经赤纬所在的一个数组，经过排查后发现是由于ssos在运行过程中需要在线查询许多关键数据，而服务器网络使用的是内部校园网，无法访问外部网络，查询结果为空，从而导致出错。</p>
+<h2 id="模拟运行"><a href="#模拟运行" class="headerlink" title="模拟运行"></a>模拟运行</h2><p>为了模拟处理望远镜日常运行的使用场景，这一部分我们将使用ZTF某一天的Twilight Survey得到的全部的科学图像作为输入，然后运行ssos pipeline。<br>我选取了2019年5月14日，因为这一天，Atira小行星2004 JG6被ZTF-TS观测到了<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="Ye Q, et al. The Astronomical Journal, 2020, 159(2): 70.
+">[2]</span></a></sup>。</p>
+<h3 id="获取图像"><a href="#获取图像" class="headerlink" title="获取图像"></a>获取图像</h3><p>尽管ZTF提供了多种查询和下载途径，却并不能直接打包下载到某一天的某一项巡天的全部数据。<br>在ZTF下载科学数据的网站目录<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://irsa.ipac.caltech.edu/ibe/data/ztf/products/sci/
+">[3]</span></a></sup>下，<em>年份&#x2F;日期&#x2F;分数日</em><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span class="hint--top hint--rounded" aria-label="当时的时间除以24小时后得到的小数部分，取值在0到1之间，这里ZTF用了小数点后前六位作为对应观测的文件夹名称。
+">[4]</span></a></sup>目录下存放着一次观测的数据。linux上的<code>wget -r url</code>命令可以递归地下载某一url目录下的全部文件，但ZTF每天产生的原始图像数据约1TB<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span class="hint--top hint--rounded" aria-label="Mahlke, M., et al. A&amp;A, 2018, 610: A21.
+">[5]</span></a></sup>，直接将一天的文件全部递归下载显然是不太合适的做法。虽然我们知道Twilight Survey是在清晨或黄昏时间段运行的，但是要不偏不漏地知道具体某一天的哪几次观测是ZTF-TS项目在运行仍旧是一件不太容易的事。这其中虽然存在日志文件等，但经过查找后发现其中并不包含巡天项目名称这一内容。要想知道某一次观测是否是ZTF-TS的，只能下载FITS图像后查看其header中的’QCOMMENT’一项，如果是，则这一项包含的会是类似’Partnership_Twilight_Winter2018’之类的内容。好在每次观测的FITS图像被分为了64个文件<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span class="hint--top hint--rounded" aria-label="ZTF有16个CCD相机，每个相机的图像又被分成了4小块
+">[6]</span></a></sup>，这样我们可以先只下载某目录下的一个FITS图像后查看其header中的QCOMMENT中是否含有’Twilight’字符串，然后再决定是否继续下载该目录下的其他FITS图像。当然，上述步骤依然不适合人工手动操作，因此我写了一个python脚本在Ubuntu服务器上运行，大致流程如下：</p>
+<ol>
+<li><p>解析HTML获取当日每次观测的全部fracday目录。</p>
+</li>
+<li><p>依次进入每个fracday目录执行第3步：</p>
+</li>
+<li><p>循环：使用wget下载链接名称中同时含有”sciimg.fits”和”zr”的文件。<br>下载第一个文件后，检查此FITS文件header的’QCOMMENT’这一项中是否含有字符串”Twilight”。<br>若是，继续循环下载此目录中其他符合上述条件的文件；若否，则将文件移动到另一个目录并退出循环。</p>
+</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/env python3</span><br><span class="hljs-comment"># -*- coding: utf-8 -*-</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">Created on Tue Mar 15 16:50:55 2022</span><br><span class="hljs-string"></span><br><span class="hljs-string">@author: ljq</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> requests<br><span class="hljs-keyword">from</span> lxml <span class="hljs-keyword">import</span> etree<br><span class="hljs-keyword">from</span> astropy.io <span class="hljs-keyword">import</span> fits<br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">The survey initially ran every night from 2018 November 17 to 2019 February 12. </span><br><span class="hljs-string">he cadence was reduced to one run every three nights from 2019 March 30 to June 23. </span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br>year=<span class="hljs-string">&quot;2019&quot;</span><br>date=<span class="hljs-string">&quot;0514&quot;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">scan</span>(<span class="hljs-params">url</span>):<br>    r = requests.get(url)<br>    tree = etree.HTML(r.text)<br>    <span class="hljs-keyword">return</span> tree.xpath(<span class="hljs-string">&#x27;//a/@href&#x27;</span>)<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">wget</span>(<span class="hljs-params">url</span>):<br>    links = scan(url)<br>    check = <span class="hljs-literal">True</span><br>    flag = <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">for</span> imglink <span class="hljs-keyword">in</span> links:<br>        <span class="hljs-keyword">if</span>(<span class="hljs-string">&quot;sciimg.fits&quot;</span> <span class="hljs-keyword">in</span> imglink <span class="hljs-keyword">and</span> <span class="hljs-string">&quot;zr&quot;</span> <span class="hljs-keyword">in</span> imglink):<br>            os.system(<span class="hljs-string">&quot;wget -c -O ts/&#123;&#125; &quot;</span>.<span class="hljs-built_in">format</span>(imglink)+url+imglink)<br>            <span class="hljs-keyword">if</span>(flag):<br>                hdu = fits.<span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;ts/&quot;</span>+imglink)<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\t&#123;&#125;\n\t[QCOMMENT]=&#123;&#125;&quot;</span>.<span class="hljs-built_in">format</span>(imglink,hdu[<span class="hljs-number">0</span>].header[<span class="hljs-string">&#x27;QCOMMENT&#x27;</span>]))<br>                check = (<span class="hljs-string">&#x27;Twilight&#x27;</span> <span class="hljs-keyword">in</span> hdu[<span class="hljs-number">0</span>].header[<span class="hljs-string">&#x27;QCOMMENT&#x27;</span>])<br>                <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;\t[checktwilight=&#123;&#125;]\n&quot;</span>.<span class="hljs-built_in">format</span>(check))<br>                <span class="hljs-keyword">if</span>(<span class="hljs-keyword">not</span> check):<br>                    os.system(<span class="hljs-string">&quot;mv ts/&#123;0&#125; other/&#123;0&#125;&quot;</span>.<span class="hljs-built_in">format</span>(imglink))<br>                    <span class="hljs-keyword">break</span><br>                flag = <span class="hljs-literal">False</span><br><br>os.system(<span class="hljs-string">&quot;mkdir ts;mkdir other&quot;</span>)<br>obsdate = <span class="hljs-string">r&quot;https://irsa.ipac.caltech.edu/ibe/data/ztf/products/sci/&#123;&#125;/&#123;&#125;/&quot;</span>.<span class="hljs-built_in">format</span>(year,date)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;PREPARING DOWNLOADING ZTF-TS SCIENCE IMAGES UNDER :\n&#123;&#125;\n&quot;</span>.<span class="hljs-built_in">format</span>(obsdate))<br>obs = scan(obsdate)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Total observation times: &quot;</span>,<span class="hljs-built_in">len</span>(obs),<span class="hljs-string">&quot;\n\n&quot;</span>)<br><br>checktwilight = <span class="hljs-literal">True</span><br><span class="hljs-keyword">for</span> fracday <span class="hljs-keyword">in</span> obs:<br>    wget(obsdate+fracday)<br></code></pre></td></tr></table></figure>
+
+<p>程序最终下载了68GB的ZTF-TS的数据，以及24GB的来自ZTF的其它项目的数据。事实上，在第3步的循环中，最初我并未限制文件名称中必须包含”zr”字符串。但对下载的文件进行观察后我发现ZTF-TS的FITS图像均包括”zr”字符串，这表示使用的是ZTF的r滤光片进行的观测。随后我在文章中查阅到ZTF-TS的确都是使用r滤光片进行拍摄的<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="Ye Q, et al. The Astronomical Journal, 2020, 159(2): 70.
+">[2]</span></a></sup>。这样限制后，再回头看那多余的24GB数据，其中有11GB的数据其实是没有必要下载的。当然，其实也可以更取巧一些，比如只检测当天最开始和最后运行的50次观测是否是Twilight Survey的。 但出于谨慎，为了避免产生遗漏，我并没有选择这种做法，</p>
+<p>总而言之，在2019年5月14日当天，ZTF共进行了696次观测，而其中仅有30次观测是属于ZTF-TS的。假如将其中全部的科学图像FITS文件下载，需要约1.6TB，而通过上述python脚本，最终可以只多下载13GB文件用于识别巡天项目名称，就能下载到完整的68GB的ZTF-TS的图像。这些图像共1917张<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span class="hint--top hint--rounded" aria-label="理论上应当是1920张，但有3张ZTF并未提供。
+">[7]</span></a></sup>，分布在9个场，其中7个场被观测了4次，2个场被观测了1次。</p>
+<h3 id="程序修补"><a href="#程序修补" class="headerlink" title="程序修补"></a>程序修补</h3><p>之前的简单测试中只输入了4张图片，ssos只需要一两分钟即可完成运行，可以想见对于这次的1917张图片，ssos需要大量时间运行。为了避免运行时意外断开与服务器的连接导致程序中断，需要使用linux下的<code>screen</code>或<code>tmux</code>等工具让程序能够后台离线运行。</p>
+<p>可是，程序在运行过程中又意外运行出错了，错误提示信息依旧是SCAMP遇到了问题。于是我输出了ssos pipeline调用系统终端使用SCAMP时的命令，发现SCAMP需要把SExtractor输出的catalog文件名全部作为参数构成一条非常长的命令来执行。我将这条包含了数千个参数的长命令复制下来在终端里运行SCAMP发现并没有问题，再重新运行ssos时，ssos直接读取了我手动运行SCAMP的输出文件，没有报错。而删掉我手动运行SCAMP生成的文件后再次运行ssos又会产生报错。</p>
+<p>以上调试过程表明，程序出错很可能是python使用os.system()命令调用系统终端时，对字符串长度有限制导致的。ssos pipeline的作者可能也没有一次性使用如此多的数据作为输入进行测试。为了解决这一问题，我尝试了下面的方法：</p>
+<ol>
+<li><p>将os.system()替换为其它具有相同功能的函数。</p>
+</li>
+<li><p>先将SExtractor的输出catalog文件名全部存储到一个文件中，再使用linux管道，将该文件的读取结果作为SCMAP的参数。</p>
+</li>
+</ol>
+<p>这两种方法都需要对ssos源代码进行修改。第一种方法经尝试后发现并不可行，因为命令的长度没有变化，而其他几个类似功能的函数同样具有长度限制。<br>而第二种方法将大量参数被间接引用，大大缩短了输入os.system()函数的字符串的长度，经测试能够成功解决ssos半途报错而中止运行的问题。</p>
+<p>这种方法需要先找到自己的ssos的安装位置，我的是在~&#x2F;anaconda3&#x2F;envs&#x2F;ssos&#x2F;lib&#x2F;python3.8&#x2F;site-packages&#x2F;ssos，所以先<code>cd ~/anaconda3/envs/ssos/lib/python3.8/site-packages/ssos</code>，再<code>sudo vim core.py</code>对文本进行编辑。</p>
+<p>找到原来的这段代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Exectue SCAMP</span><br>catalogs = <span class="hljs-string">&quot; &quot;</span>.join(scamp_args[<span class="hljs-string">&quot;files&quot;</span>])<br>cmd = <span class="hljs-string">&quot; &quot;</span>.join([<span class="hljs-string">&quot;scamp&quot;</span>, catalogs, <span class="hljs-string">&quot;-c&quot;</span>, scamp_args[<span class="hljs-string">&quot;config&quot;</span>]])<br><span class="hljs-keyword">for</span> param, value <span class="hljs-keyword">in</span> scamp_args[<span class="hljs-string">&quot;overwrite_params&quot;</span>].items():<br>    cmd += <span class="hljs-string">&quot; &quot;</span>.join([<span class="hljs-string">&quot; -&quot;</span> + param, value])<br>self.log.debug(<span class="hljs-string">&quot;\nExecuting SCAMP command:\n%s\n&quot;</span> % cmd)<br>os.system(cmd)<br>scamp_from_file = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<p>改为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># Exectue SCAMP</span><br>catalogs = <span class="hljs-string">&quot; &quot;</span>.join(scamp_args[<span class="hljs-string">&quot;files&quot;</span>])<br>cmd = <span class="hljs-string">&quot; &quot;</span>.join([catalogs, <span class="hljs-string">&quot;-c&quot;</span>, scamp_args[<span class="hljs-string">&quot;config&quot;</span>]])<br><span class="hljs-keyword">for</span> param, value <span class="hljs-keyword">in</span> scamp_args[<span class="hljs-string">&quot;overwrite_params&quot;</span>].items():<br>    cmd += <span class="hljs-string">&quot; &quot;</span>.join([<span class="hljs-string">&quot; -&quot;</span> + param, value])<br>self.log.debug(<span class="hljs-string">&quot;\nExecuting SCAMP command:\n%s\n&quot;</span> % cmd)<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;scamp_cmd_tmp.txt&#x27;</span>,<span class="hljs-string">&#x27;w&#x27;</span>) <span class="hljs-keyword">as</span> scampcmdtmp:<br>    scampcmdtmp.write(cmd)<br>os.system(<span class="hljs-string">&quot;cat scamp_cmd_tmp.txt ; scamp ` cat scamp_cmd_tmp.txt`&quot;</span>)<br>scamp_from_file = <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="调试分析"><a href="#调试分析" class="headerlink" title="调试分析"></a>调试分析</h3><p>对于上述1917个图片的输入，ssos运行了11个半小时，生成了8GB的数据，最终得到了476个候选SSOs，其中2个被SkyBot成功匹配。分别是越火小行星2001 QS84和主带小行星Angekauffmann。然后，我单独挑出了2004JG6所在的4张FITS图像再次运行ssos，结果并未找到任何候选SSOs。在多次调整ssos的配置，如设置更大的CROSSMATCH_RADIUS、关闭ssos的几乎全部筛选器等之后，同样的4张图输出了9770个候选SSOs，其中37个被SkyBot匹配到。此次被匹配到的包括2004 JG6，但4次探测中只有第二次被匹配到了，且自行速度很小。为此，我在ZTF的图像搜寻网页<sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://irsa.ipac.caltech.edu/applications/ztf/?__action=layout.showDropDown&amp;view=Search
+">[8]</span></a></sup> 中的”通过太阳系天体名称&#x2F;轨道搜寻”里找到了2019年5月14号当天2004 JG6的图像，如图所示：</p>
+<img src="/~ljq1999/2022/06/14/ssos_using/2004JG6.jpg" srcset="/~ljq1999/img/loading.gif" lazyload class="" title="使用ZTF的在线图像搜寻得到的2004JG6当天的图像">
+
+<p>从图中我们可以推测，被匹配上的其实是第二张图中的恒星，这也可以解释为什么输出结果中的自行速度很小。而真正的2004 JG6可能由于太过暗弱而没有被SExtractor识别，或者在四次探测中由于第二次没有与那个固定点源分离而使其它几次未被SCAMP当作同一个源。</p>
+<p>对于最初得到的474个未被匹配的候选SSOs，使用ssos的inspect功能查看后基本都看不出任何相对背景有明显移动的光点，甚至连画面的位置都看不出移动。查看工作目录&#x2F;cats&#x2F;ssos.csv文件后，我发现绝大多数候选SSOs的自行(Proper Motion,PM)都只有零点几或个位数，而被匹配到的SSOs的PM数值都高达七八十乃至一百多。<sup id="fnref:9" class="footnote-ref"><a href="#fn:9" rel="footnote"><span class="hint--top hint--rounded" aria-label="本文提到PM时均默认以arcsec&#x2F;h为单位。
+">[9]</span></a></sup>而对工作目录&#x2F;cats&#x2F;skybot.csv中的数万条查询结果按照PM进行排序后，我发现了以下规律：</p>
+<ol>
+<li><p>【PM&lt;0】只有NEA-Apollo&#x2F;Aten。</p>
+</li>
+<li><p>【0&lt;PM&lt;10】KBO基本只出现在这一范围,Comet,少量 NEA-Apollo&#x2F;Aten。</p>
+</li>
+<li><p>【10&lt;PM&lt;100】两端过渡区群魔乱舞，但总的来说MB是绝对的主力。</p>
+</li>
+<li><p>【100&lt;PM】几乎全是NEA或Mars-Crosser。</p>
+</li>
+</ol>
+<p>由此可以发现，ssos pipeline可能是为了照顾到自行较慢的TNOs而将自行的下限参数PM_LOW设为了0，但对于我们寻找NEOs来说，适当提高PM_LOW的值虽然存在遗漏少量NEA的可能，但由于如此小的PM在ZTF-TS每次运行的短短20分钟内产生不了易于辨认的移动供肉眼检查，所以可以说几乎没有负面影响，而好处则是可以筛去大量影响人工检查的候选体。</p>
+<p>在将PM_LOW设为10之后，我得到了5个SSOs，其中2个是已经被SkyBot成功匹配的，而剩下3个中有两个疑似彗星，PM分别为75。23和96.88，最后一个PM为18.95的则看不出明显相对背景移动的光点。</p>
+<p>此外，在翻阅ssos.csv时，我发现一个奇怪的现象：这476个候选SSOs几乎全部来自704、705、745三个场，零星有两三个与744、780、781场有关，而613、660、661三个场则一条数据也没有。首先想到的是这几个场的观测次数可能不足4次，但实际上只有744、780被观测了1次，其余7个场均被观测了4次。于是我输出了ssos pipeline运行过程中更多的细节，发现SCAMP会把探测到的源分组。而在此之前的全部过程中每个场都执行了相应的SkyBot查询和源探测步骤。SCAMP分组时并不是按照ZTF的场的编号分组的，但具体分组算法并未在SCAMP的文档<sup id="fnref:10" class="footnote-ref"><a href="#fn:10" rel="footnote"><span class="hint--top hint--rounded" aria-label="https://scamp.readthedocs.io/en/latest/
+">[10]</span></a></sup>中给出。</p>
+<p>考虑到服务器上使用的是旧版本的SCAMP 2.0.4，在征得同意后，我将服务器Ubuntu系统进行了升级，SCAMP也随之更新到了2.10.0版本。在使用相同的输入和配置文件的情况下，我使用新版本AstrOmatic套件运行了ssos pipeline，这次SCAMP分的组的数目与之前旧版本并不相同。而最后运行结果只找到了143个候选SSOs，0个被SkyBot匹配到。而在ssos.csv文件中，705场的数据也没有了。于是我将只把705场的图像作为输入，测试ssos pipeline是否真的无法从中找到候选SSOs。然而程序给出了35个候选SSOs，0个被SkyBot匹配到。然后我更进一步，只选取了2001 QS84和Angekauffmann所在的705场的15号CCD的四次观测，共16张图片作为输入。这次运行结果给出了42个候选SSOs，这反而比整个705场运行后给出的35个候选SSOs还多，而且这次也成功匹配到了2001 QS84和Angekauffmann。也就是说，虽然SCAMP可以将不同视场中的源关联起来，但将每个视场甚至每个CCD的图像分别在ssos中运行反而能给出更好的结果。</p>
+<hr>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://doi.org/10.1093/mnrasl/slaa025">Greenstreet S. Monthly Notices of the Royal Astronomical Society: Letters, 2020 ,493(1): L129–L131.</a>
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://doi.org/10.3847/1538-3881/ab629c">Ye Q, et al. The Astronomical Journal, 2020, 159(2): 70.</a>
+<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://irsa.ipac.caltech.edu/ibe/data/ztf/products/sci/">https://irsa.ipac.caltech.edu/ibe/data/ztf/products/sci/</a>
+<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:4" class="footnote-text"><span>当时的时间除以24小时后得到的小数部分，取值在0到1之间，这里ZTF用了小数点后前六位作为对应观测的文件夹名称。
+<a href="#fnref:4" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:5" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://doi.org/10.1051/0004-6361/201730924">Mahlke, M., et al. A&amp;A, 2018, 610: A21.</a>
+<a href="#fnref:5" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:6" class="footnote-text"><span>ZTF有16个CCD相机，每个相机的图像又被分成了4小块
+<a href="#fnref:6" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:7" class="footnote-text"><span>理论上应当是1920张，但有3张ZTF并未提供。
+<a href="#fnref:7" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:8" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://irsa.ipac.caltech.edu/applications/ztf/?__action=layout.showDropDown&amp;view=Search">https://irsa.ipac.caltech.edu/applications/ztf/?__action=layout.showDropDown&amp;view=Search</a>
+<a href="#fnref:8" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:9" class="footnote-text"><span>本文提到PM时均默认以arcsec&#x2F;h为单位。
+<a href="#fnref:9" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:10" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://scamp.readthedocs.io/en/latest/">https://scamp.readthedocs.io/en/latest/</a>
+<a href="#fnref:10" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/~ljq1999/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
+  
+  
+    <span>></span>
+    
+  <a href="/~ljq1999/categories/%E5%B7%A5%E4%BD%9C/ssos/" class="category-chain-item">ssos</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/~ljq1999/tags/ssos/">#ssos</a>
+      
+        <a href="/~ljq1999/tags/%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%A4%A9%E4%BD%93/">#太阳系天体</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>运行ssos</div>
+      <div>http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_using/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>四维树</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月14日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/~ljq1999/2022/06/14/ssos_pipeline/" title="ssos简介">
+                        <span class="hidden-mobile">ssos简介</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/~ljq1999/js/events.js" ></script>
+<script  src="/~ljq1999/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/~ljq1999/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/~ljq1999/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/~ljq1999/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
