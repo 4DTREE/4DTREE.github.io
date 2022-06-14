@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/~ljq1999/img/logo.jpeg">
-  <link rel="icon" href="/~ljq1999/img/logo.jpeg">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpeg">
+  <link rel="icon" href="/img/logo.jpeg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,18 +19,18 @@
     <meta name="description" content="ssos pipelinessos是一款命令行程序，使用python3编写，可以从FITS天文图像文件中搜寻从近地天体到柯伊伯带天体的各类太阳系天体。其名称来源于SSOs，即太阳系天体(Solar System Objects)。作者将其源码上传至了github上[1], 提供了在线文档[2]以供参阅，并发表了相关论文[3]。尽管如此，笔者在安装和使用ssos时还是遇到了许多未被提及的问题，本文将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssos简介">
-<meta property="og:url" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/index.html">
+<meta property="og:url" content="http://4dtree.github.io/2022/06/14/ssos_pipeline/index.html">
 <meta property="og:site_name" content="四维树的博客站">
 <meta property="og:description" content="ssos pipelinessos是一款命令行程序，使用python3编写，可以从FITS天文图像文件中搜寻从近地天体到柯伊伯带天体的各类太阳系天体。其名称来源于SSOs，即太阳系天体(Solar System Objects)。作者将其源码上传至了github上[1], 提供了在线文档[2]以供参阅，并发表了相关论文[3]。尽管如此，笔者在安装和使用ssos时还是遇到了许多未被提及的问题，本文将">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg">
+<meta property="og:image" content="http://4dtree.github.io/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg">
 <meta property="article:published_time" content="2022-06-14T09:12:34.762Z">
 <meta property="article:modified_time" content="2022-06-14T16:24:49.100Z">
 <meta property="article:author" content="四维树">
 <meta property="article:tag" content="ssos">
 <meta property="article:tag" content="太阳系天体">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg">
+<meta name="twitter:image" content="http://4dtree.github.io/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg">
   
   
   
@@ -58,12 +58,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/~ljq1999/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/~ljq1999/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/~ljq1999/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -72,15 +72,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"home.ustc.edu.cn","root":"/~ljq1999/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/~ljq1999/local-search.xml"};
+    var CONFIG = {"hostname":"4dtree.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/~ljq1999/js/utils.js" ></script>
-  <script  src="/~ljq1999/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 
   
 <meta name="generator" content="Hexo 5.4.2"></head>
@@ -95,7 +95,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/~ljq1999/">
+    <a class="navbar-brand" href="/">
       <strong>四维树的博客</strong>
     </a>
 
@@ -114,7 +114,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/~ljq1999/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -126,7 +126,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/~ljq1999/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -138,7 +138,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/~ljq1999/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -150,7 +150,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/~ljq1999/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -162,7 +162,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/~ljq1999/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -174,7 +174,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/~ljq1999/links/">
+              <a class="nav-link" href="/links/">
                 <i class="iconfont icon-link-fill"></i>
                 友链
               </a>
@@ -203,7 +203,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/~ljq1999/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -334,7 +334,7 @@
     
       
       
-        <a href="/~ljq1999/2022/06/14/ssos_pipeline/" title="ssos简介"
+        <a href="/2022/06/14/ssos_pipeline/" title="ssos简介"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">ssos简介</span>
@@ -343,7 +343,7 @@
     
       
       
-        <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos"
+        <a href="/2022/06/14/ssos_using/" title="运行ssos"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">运行ssos</span>
@@ -384,7 +384,7 @@
     
       
       
-        <a href="/~ljq1999/2022/06/14/ssos_pipeline/" title="ssos简介"
+        <a href="/2022/06/14/ssos_pipeline/" title="ssos简介"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">ssos简介</span>
@@ -393,7 +393,7 @@
     
       
       
-        <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos"
+        <a href="/2022/06/14/ssos_using/" title="运行ssos"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">运行ssos</span>
@@ -509,7 +509,7 @@
 </li>
 </ol>
 <h2 id="程序流程"><a href="#程序流程" class="headerlink" title="程序流程"></a>程序流程</h2><p>配置好文件后，将所用到的FITS图像全部放入某一目录，然后在配置文件所在目录打开终端，执行<code>ssos path/to/images</code>命令,即可运行ssos主程序。程序流程图如图所示：</p>
-<img src="/~ljq1999/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg" srcset="/~ljq1999/img/loading.gif" lazyload class="" title="ssos-pipeline-flowchart">
+<img src="/2022/06/14/ssos_pipeline/ssos-pipeline-flowchart.jpg" srcset="/img/loading.gif" lazyload class="" title="ssos-pipeline-flowchart">
 
 <p>图中虚线框内是ssos程序外部提供的内容：左边一列是需要通过网络在线查询的内容，最上方是待处理的FITS图像，而右边虚线框内是存储在用户本地的可配置的文件。</p>
 <p>ssos pipeline会自动执行以下步骤：</p>
@@ -579,12 +579,12 @@
     
       <span class="category-chain">
         
-  <a href="/~ljq1999/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/" class="category-chain-item">工作</a>
   
   
     <span>></span>
     
-  <a href="/~ljq1999/categories/%E5%B7%A5%E4%BD%9C/ssos/" class="category-chain-item">ssos</a>
+  <a href="/categories/%E5%B7%A5%E4%BD%9C/ssos/" class="category-chain-item">ssos</a>
   
   
 
@@ -601,9 +601,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/~ljq1999/tags/ssos/">#ssos</a>
+        <a href="/tags/ssos/">#ssos</a>
       
-        <a href="/~ljq1999/tags/%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%A4%A9%E4%BD%93/">#太阳系天体</a>
+        <a href="/tags/%E5%A4%AA%E9%98%B3%E7%B3%BB%E5%A4%A9%E4%BD%93/">#太阳系天体</a>
       
     </div>
   
@@ -616,7 +616,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>ssos简介</div>
-      <div>http://home.ustc.edu.cn/~ljq1999/2022/06/14/ssos_pipeline/</div>
+      <div>http://4dtree.github.io/2022/06/14/ssos_pipeline/</div>
     </div>
     <div class="license-meta">
       
@@ -658,7 +658,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/~ljq1999/2022/06/14/ssos_using/" title="运行ssos">
+                      <a href="/2022/06/14/ssos_using/" title="运行ssos">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">运行ssos</span>
                         <span class="visible-mobile">上一篇</span>
@@ -668,7 +668,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/~ljq1999/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="人工智能概览">
+                      <a href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="人工智能概览">
                         <span class="hidden-mobile">人工智能概览</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -794,8 +794,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/~ljq1999/js/events.js" ></script>
-<script  src="/~ljq1999/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -834,7 +834,7 @@
 
 
   
-    <script  src="/~ljq1999/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -971,7 +971,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/~ljq1999/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
@@ -979,7 +979,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/~ljq1999/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
