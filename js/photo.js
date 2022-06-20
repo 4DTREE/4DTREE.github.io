@@ -50,10 +50,8 @@ photo = {
                 '<a data-fancybox="gallery" href="' + imgNameWithPattern + '?raw=true" data-caption="' + imgName + '">' +
                 '<img src="' + imgNameWithPattern + '?raw=true"/>' +
                 '</a>' +
-                '</div>' +
-                // 
-                '' 
-                + imgName + '' +  //图片下显示文件名作为说明的功能
+                '</div>' + 
+                '<p color="white">' + imgName + '</p>' + //图片下显示文件名作为说明的功能
                 '</div>'
         }
         $(".ImageGrid").append(li);
