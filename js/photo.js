@@ -51,7 +51,7 @@ photo = {
                 '<img src="' + imgNameWithPattern + '?raw=true"/>' +
                 '</a>' +
                 '</div>' + 
-                '<p color="white">' + imgName + '</p>' + //图片下显示文件名作为说明的功能
+                '<p>' + imgName + '</p>' + //图片下显示文件名作为说明的功能
                 '</div>'
         }
         $(".ImageGrid").append(li);
@@ -67,6 +67,7 @@ photo = {
         $(window).resize(function () {
             grid.mount();
         });
-    }
+    },
+    
 }
 photo.init();
