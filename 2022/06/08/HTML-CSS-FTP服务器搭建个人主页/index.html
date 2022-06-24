@@ -1,0 +1,1046 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.jpeg">
+  <link rel="icon" href="/img/logo.jpeg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="四维树">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="HTML+CSS+FTP服务器搭建个人主页起因契机偶然看到了USTC-LUG的一个关于交流会：适合个人开发者的网站开发方案 - LUG @ USTC，屁屁踢和录像可以戳这里：weekly_party&#x2F;2021.12.18_Web_Development&#x2F;。再加上认识的几位同学也在学校的FTP服务器上搭建了&#x2F;搭建过个人主页，给我一种身边人人都会写网页的恐慌，所以决定自己">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML+CSS+FTP服务器搭建个人主页">
+<meta property="og:url" content="https://4dtree.github.io/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/index.html">
+<meta property="og:site_name" content="四维树的博客站">
+<meta property="og:description" content="HTML+CSS+FTP服务器搭建个人主页起因契机偶然看到了USTC-LUG的一个关于交流会：适合个人开发者的网站开发方案 - LUG @ USTC，屁屁踢和录像可以戳这里：weekly_party&#x2F;2021.12.18_Web_Development&#x2F;。再加上认识的几位同学也在学校的FTP服务器上搭建了&#x2F;搭建过个人主页，给我一种身边人人都会写网页的恐慌，所以决定自己">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://4dtree.github.io/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/LinusTorvalds-FreeSoftware.jpg">
+<meta property="og:image" content="https://4dtree.github.io/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/%E9%A2%84%E8%A7%88-IPADPRO.png">
+<meta property="og:image" content="https://4dtree.github.io/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/%E9%A2%84%E8%A7%88-IPHONESE.png">
+<meta property="article:published_time" content="2022-06-08T13:24:00.000Z">
+<meta property="article:modified_time" content="2022-06-22T17:38:37.990Z">
+<meta property="article:author" content="四维树">
+<meta property="article:tag" content="HTML">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://4dtree.github.io/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/LinusTorvalds-FreeSoftware.jpg">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>HTML+CSS+FTP服务器搭建个人主页 - 四维树的博客站</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"4dtree.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loadingIMG.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 80vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>四维树的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-abc"></i>
+                    全部
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E9%9A%8F%E7%AC%94/">
+                    <i class="iconfont icon-pen"></i>
+                    随笔
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E7%BC%96%E7%A8%8B/">
+                    <i class="iconfont icon-code"></i>
+                    编程
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E6%8A%80%E6%9C%AF/">
+                    <i class="iconfont icon-exp-fill"></i>
+                    技术
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E5%B7%A5%E4%BD%9C/">
+                    <i class="iconfont icon-books"></i>
+                    工作
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E7%AC%94%E8%AE%B0/">
+                    <i class="iconfont icon-notebook"></i>
+                    笔记
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/photos/">
+                <i class="iconfont icon-images"></i>
+                图集
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/wallhaven-ne7lr8.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="HTML+CSS+FTP服务器搭建个人主页"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-08 21:24" pubdate>
+          2022年6月8日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          51 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="技术"
+        id="heading-a95dd3e179418be1ecd2a719a22db70e" role="tab" data-toggle="collapse" href="#collapse-a95dd3e179418be1ecd2a719a22db70e"
+        aria-expanded="true"
+      >
+        技术
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-a95dd3e179418be1ecd2a719a22db70e"
+           role="tabpanel" aria-labelledby="heading-a95dd3e179418be1ecd2a719a22db70e">
+        
+        
+          
+          
+  <div class="category-post-list">
+    
+    
+  </div>
+
+          
+  
+    
+    
+    
+    <div class="category-sub row nomargin-x">
+      <a class="category-subitem 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="建站"
+        id="heading-adfc37610c59d9bd09bffc3e9759f170" role="tab" data-toggle="collapse" href="#collapse-adfc37610c59d9bd09bffc3e9759f170"
+        aria-expanded="true"
+      >
+        建站
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-adfc37610c59d9bd09bffc3e9759f170"
+           role="tabpanel" aria-labelledby="heading-adfc37610c59d9bd09bffc3e9759f170">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" title="HTML+CSS+FTP服务器搭建个人主页"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">HTML+CSS+FTP服务器搭建个人主页</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/21/Hexo-Fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/" title="Hexo-Fluid主题添加相册功能"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo-Fluid主题添加相册功能</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/15/Hexo%E6%A1%86%E6%9E%B6-Fluid%E4%B8%BB%E9%A2%98-GitHubPages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hexo框架+Fluid主题+GitHub Pages搭建个人博客"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo框架+Fluid主题+GitHub Pages搭建个人博客</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+        
+      </div>
+    </div>
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="建站"
+        id="heading-adfc37610c59d9bd09bffc3e9759f170" role="tab" data-toggle="collapse" href="#collapse-adfc37610c59d9bd09bffc3e9759f170"
+        aria-expanded="true"
+      >
+        建站
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-adfc37610c59d9bd09bffc3e9759f170"
+           role="tabpanel" aria-labelledby="heading-adfc37610c59d9bd09bffc3e9759f170">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" title="HTML+CSS+FTP服务器搭建个人主页"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">HTML+CSS+FTP服务器搭建个人主页</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/21/Hexo-Fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/" title="Hexo-Fluid主题添加相册功能"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo-Fluid主题添加相册功能</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/06/15/Hexo%E6%A1%86%E6%9E%B6-Fluid%E4%B8%BB%E9%A2%98-GitHubPages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="Hexo框架+Fluid主题+GitHub Pages搭建个人博客"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Hexo框架+Fluid主题+GitHub Pages搭建个人博客</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">HTML+CSS+FTP服务器搭建个人主页</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2 天前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h1 id="HTML-CSS-FTP服务器搭建个人主页"><a href="#HTML-CSS-FTP服务器搭建个人主页" class="headerlink" title="HTML+CSS+FTP服务器搭建个人主页"></a>HTML+CSS+FTP服务器搭建个人主页</h1><h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><h3 id="契机"><a href="#契机" class="headerlink" title="契机"></a>契机</h3><p>偶然看到了USTC-LUG的一个关于交流会：<a target="_blank" rel="noopener" href="https://lug.ustc.edu.cn/news/2021/12/web-development/">适合个人开发者的网站开发方案 - LUG @ USTC</a>，屁屁踢和录像可以戳这里：<a target="_blank" rel="noopener" href="http://ftp.lug.ustc.edu.cn/weekly_party/2021.12.18_Web_Development/">weekly_party&#x2F;2021.12.18_Web_Development&#x2F;</a>。再加上认识的几位同学也在学校的FTP服务器上搭建了&#x2F;搭建过个人主页，<s>给我一种身边人人都会写网页的恐慌，</s>所以决定自己也搞一个个人主页玩一玩<del>卷死他们</del>。</p>
+<h3 id="新发现"><a href="#新发现" class="headerlink" title="新发现"></a>新发现</h3><p>以前听说过注册域名、购买服务器之类的，以为建站必须要花钱才行。然而经过上面的契机，我发现其实是可以白嫖滴，嘿嘿～一方面学校提供了FTP个人主页功能，另一方面也有许多免费提供静态页面托管服务的，如<a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>。虽然这些都只支持静态网页，但不涉及数据库管理的话静态网页已经足以实现非常多的功能了。</p>
+<p>这就很妙了，意味着我们可以使用JavaScript编写网页端程序并部署到网页，然后只需要把网页链接丢给别人，别人不需要自行安装运行环境，直接在浏览器上就可以使用我们的程序了（因为浏览器的功能之一就是JavaScript解释器！）。（虽说也有诸如<a target="_blank" rel="noopener" href="https://www.heroku.com/">HEROKU</a>这样的云应用平台可以托管各种语言编写的程序，但免费版还是有诸多限制。）</p>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p>我花了几周时间阅读了<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Learn">学习 Web 开发 | MDN</a>关于HTML和CSS的部分。对于初步搭建一个网页来说，只需要web三剑客中的HTML和CSS就足够了，因为暂时还不需要实现特别复杂的功能，JavaScript可以留到以后再说。</p>
+<p>不过我后来觉得或许其实并不需要看那么详细，大概了解一下有哪些html标签、基本的css属性、选择器什么的就好，其他大可以用到了再去找。</p>
+<p>另外还有一点阅读感想：一个良好的网页不能仅适合普通人浏览，还应当为色盲、听障人士等特殊人群浏览时提供便利。</p>
+<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><p>相比起加载巨慢的IDE，我还是喜欢打开快速的轻量的编辑器。之前我最常用的代码编辑器是<code>Sublime Text</code>，直到后来遇到了<code>VS Code</code>。如果你还没用过<code>VS Code</code>，那我强烈建议你试一试。这里随便列几个我认为的优点：</p>
+<ul>
+<li><p>打开速度很快。</p>
+</li>
+<li><p>支持各种语言，只要安装相应插件即可。</p>
+</li>
+<li><p>海量插件，傻瓜式一键安装。</p>
+</li>
+<li><p>时间线功能。</p>
+</li>
+<li><p>方便的快捷键。举几个例子（Ctrl对应Mac OS中的Command键）：</p>
+<ul>
+<li><p>Ctrl+L：选中当前行。</p>
+</li>
+<li><p>Ctrl+D：添加下一个匹配项。（和下一个类似，可以快速进行批量更改某一个变量的名字之类的操作。）</p>
+</li>
+<li><p>Ctrl+Shift+L：选中所有匹配项。</p>
+</li>
+<li><p>Ctrl+&#x2F;：切换行注释。（不需要将光标移动至行首，也不需要再去管这种编程语言的注释用的标识符是什么，直接Ctrl+&#x2F;就好！）</p>
+</li>
+</ul>
+</li>
+<li><p>对于HTML，右键有个格式化文档功能，可以把排版混乱的html文件自动缩进成结构清晰的形式，而且支持<code>Emmet</code>语法。</p>
+</li>
+</ul>
+<h2 id="写代码"><a href="#写代码" class="headerlink" title="写代码"></a>写代码</h2><p>html文件可以直接用浏览器打开进行预览，浏览器会自动加载html中给出的CSS和JavaScript。（如果需要加载外部资源的话，需要搭建本地服务器预览，不过本文中不需要。）</p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><p>index.html内容如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;zh-CN&quot;</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">http-equiv</span>=<span class="hljs-string">&quot;X-UA-Compatible&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;IE=edge&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>XXX的首页<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;styles/demo.css&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">base</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_blank&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;banner&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>欢迎来到XXX的个人主页（示例）<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;nav&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;index.html&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_top&quot;</span>&gt;</span>首页<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;blogs.html&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_top&quot;</span>&gt;</span>博客文章<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;about.html&quot;</span> <span class="hljs-attr">target</span>=<span class="hljs-string">&quot;_top&quot;</span>&gt;</span>关于<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>   <br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span><br>                我是谁？<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>头衔1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>头衔2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>头衔3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>经历<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>时<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>事<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">th</span>&gt;</span>释<span class="hljs-tag">&lt;/<span class="hljs-name">th</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>小学<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>呼啦呼啦<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>                <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>中学<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>叽里咕噜<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>                    <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>唔哩哇啦<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><br>                <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>鸽人简介<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>性别：<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>爱好：<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>喜欢的歌手和音乐<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>歌手A<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>歌曲1<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>歌曲2<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>歌手B<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>歌曲3<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>喜欢的电影<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>外语片<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>《电影1》<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>国产片<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>《电影2》<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;footer&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>友情链接：<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://zhang3.com&quot;</span>&gt;</span>张三<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;http://lililili.com&quot;</span>&gt;</span>李四<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>申请加入我的友链，请提供：<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>博客名：李二狗<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>简介：李二狗全球官方唯一博客<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>链接：https://www.Li2Dog.com<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>图片：Li2Dog.png(jpg、jpeg等均可)<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>关于布局的话我选择了CSS的flex布局，部件尺寸和排布会跟随屏幕尺寸变化。</p>
+<p>类选择器相关部分是自己写的，其他是从别的地方拼凑的，部分有微调。整个网页的配色是自己手动调的。</p>
+<p>styles&#x2F;demo.css，仅供参考：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">body</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span>;<br>    <span class="hljs-attribute">font-family</span>: verdana, arial, <span class="hljs-string">&#x27;sans serif&#x27;</span>;<br>    <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;gradient.png&#x27;</span>);<br>    <span class="hljs-attribute">background-repeat</span>: repeat-x;<br>    <span class="hljs-attribute">background-color</span>:lightseagreen;<br>    <span class="hljs-attribute">color</span>: <span class="hljs-number">#000080</span>;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">5%</span>;<br><br>&#125;<br><br><span class="hljs-selector-class">.banner</span> &#123;<br>    <span class="hljs-attribute">background-color</span>:sandybrown;<br>&#125;<br><br><span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">30px</span>;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;<br>&#125;<br><br><span class="hljs-selector-class">.nav</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: royalblue;<br>    <span class="hljs-attribute">display</span>: -webkit-flex;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">flex-flow</span>: row nowrap;<br>    <span class="hljs-attribute">justify-content</span>: space-around;<br><br>&#125;<br><br><span class="hljs-selector-class">.nav</span> <span class="hljs-selector-tag">a</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: gold;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;<br>    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">20px</span>;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">150%</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">flex</span>: auto;<br>&#125;<br><br><span class="hljs-selector-class">.box</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">208</span>, <span class="hljs-number">89</span>, <span class="hljs-number">82</span>);<br>    <span class="hljs-attribute">display</span>: -webkit-flex;<br>    <span class="hljs-attribute">display</span>: flex;<br>    <span class="hljs-attribute">flex-flow</span>: row wrap;<br>    <span class="hljs-attribute">justify-content</span>: space-around;<br>    <span class="hljs-attribute">flex</span>:auto;<br>&#125;<br><br><span class="hljs-selector-class">.box</span>&gt;<span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid navy;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#FFFFF0</span>;<br>    <span class="hljs-attribute">min-width</span>: <span class="hljs-number">250px</span>;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;<br><br>&#125;<br><br><span class="hljs-selector-class">.footer</span> &#123;<br>    <span class="hljs-attribute">background-color</span>:lightpink;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> black;<br>    <span class="hljs-attribute">align-self</span>: flex-end;<br>&#125;<br><br><span class="hljs-selector-tag">h1</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">200%</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>&#125;<br><br><span class="hljs-selector-tag">h2</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">160%</span>;<br>&#125;<br><br><span class="hljs-selector-tag">h3</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">120%</span>;<br>    <span class="hljs-attribute">text-align</span>: center;<br>    <span class="hljs-attribute">border-top</span>:<span class="hljs-number">2px</span> dashed <span class="hljs-number">#000080</span>;<br>&#125;<br><br><span class="hljs-selector-tag">table</span> &#123;<br>    <span class="hljs-attribute">border-collapse</span>: collapse;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-built_in">rgb</span>(<span class="hljs-number">200</span>, <span class="hljs-number">200</span>, <span class="hljs-number">200</span>);<br>    <span class="hljs-attribute">letter-spacing</span>: <span class="hljs-number">1px</span>;<br><br>&#125;<br><br><span class="hljs-selector-tag">td</span>,<br><span class="hljs-selector-tag">th</span> &#123;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-built_in">rgb</span>(<span class="hljs-number">190</span>, <span class="hljs-number">190</span>, <span class="hljs-number">190</span>);<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span>;<br>&#125;<br><br><span class="hljs-selector-tag">th</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">235</span>, <span class="hljs-number">235</span>, <span class="hljs-number">235</span>);<br>&#125;<br><br><span class="hljs-selector-tag">td</span> &#123;<br>    <span class="hljs-attribute">text-align</span>: center;<br>&#125;<br><br><span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child</span>(even) <span class="hljs-selector-tag">td</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">250</span>, <span class="hljs-number">250</span>, <span class="hljs-number">250</span>);<br>&#125;<br><br><span class="hljs-selector-tag">tr</span><span class="hljs-selector-pseudo">:nth-child</span>(odd) <span class="hljs-selector-tag">td</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">245</span>, <span class="hljs-number">245</span>, <span class="hljs-number">245</span>);<br>&#125;<br><br><span class="hljs-selector-tag">ul</span> &#123;<br>    <span class="hljs-attribute">list-style</span>: circle;<br>&#125;<br><br><span class="hljs-selector-tag">ol</span> &#123;<br>    <span class="hljs-attribute">list-style</span>: upper-roman;<br>&#125;<br><br><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:link</span> &#123;<br>    <span class="hljs-attribute">color</span>:blueviolet;<br>&#125;<br><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> &#123;<br>    <span class="hljs-attribute">color</span>:dimgray;<br>&#125;<br><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:visited</span>&#123;<br>    <span class="hljs-attribute">color</span>:black;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="上传到FTP服务器"><a href="#上传到FTP服务器" class="headerlink" title="上传到FTP服务器"></a>上传到FTP服务器</h2><p>如果想要让其他人也能通过网页链接查看，需要我们上传项目到网络服务器上。</p>
+<p>你科给每位师生都提供了FTP个人主页功能：<a target="_blank" rel="noopener" href="https://netfee.ustc.edu.cn/faq/index.html#homepage">网络信息中心用户服务部FAQ</a>，就先用它来试试水吧。</p>
+<h3 id="FTP软件"><a href="#FTP软件" class="headerlink" title="FTP软件"></a>FTP软件</h3><p>首先想到的就是之前在windows电脑上用过的<code>FileZilla</code>，可恶的是<code>FileZilla</code>在Windows上免费，偏偏Mac OS版本要收费。</p>
+<img src="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/LinusTorvalds-FreeSoftware.jpg" srcset="/img/loadingIMG.gif" lazyload class="">
+
+<p>后来搜罗一圈后选择了免费的<code>Cyberduck</code>，翻译成中文就是“赛博鸭子”，不得不说这个名字真的绝绝子。</p>
+<h3 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h3><p>按照<a target="_blank" rel="noopener" href="http://home.ustc.edu.cn/help/">中国科大学生FTP&#x2F;主页服务器系统的使用说明</a>，接下来只需要建立public_html目录，然后把index.html等文件丢进去就好啦。</p>
+<p>刚丢进去就能通过相应的网络地址访问了，非常nice！</p>
+<p>使用浏览器自带的开发者工具，可以预览不同屏幕尺寸和不同UA下显示的页面。可以看到使用flex布局的网页会自动调整间距和排列方式等。</p>
+<img src="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/%E9%A2%84%E8%A7%88-IPADPRO.png" srcset="/img/loadingIMG.gif" lazyload class="">
+
+<p>在手机屏幕下也能良好地显示：</p>
+<img src="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/%E9%A2%84%E8%A7%88-IPHONESE.png" srcset="/img/loadingIMG.gif" lazyload class="">
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF/%E5%BB%BA%E7%AB%99/" class="category-chain-item">建站</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/HTML/">#HTML</a>
+      
+        <a href="/tags/CSS/">#CSS</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>HTML+CSS+FTP服务器搭建个人主页</div>
+      <div>https://4dtree.github.io/2022/06/08/HTML-CSS-FTP服务器搭建个人主页/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>四维树</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月8日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年6月23日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/14/ssos_pipeline/" title="ssos简介">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ssos简介</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="简单了解人工智能">
+                        <span class="hidden-mobile">简单了解人工智能</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/caidai.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

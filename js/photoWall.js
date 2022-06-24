@@ -48,6 +48,7 @@ const photo = {
                   </div>
                   <p>${imgName}</p>
                 </div>`;
+                // 如果不希望显示图片名称的话删去<p>${imgName}</p>这一行即可。
     return htmlEle;
   },
   render: function (page, data = []) {

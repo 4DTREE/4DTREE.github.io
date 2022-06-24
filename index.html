@@ -125,11 +125,63 @@
           
           
           
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-abc"></i>
+                    全部
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E9%9A%8F%E7%AC%94/">
+                    <i class="iconfont icon-pen"></i>
+                    随笔
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E7%BC%96%E7%A8%8B/">
+                    <i class="iconfont icon-code"></i>
+                    编程
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E6%8A%80%E6%9C%AF/">
+                    <i class="iconfont icon-exp-fill"></i>
+                    技术
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E5%B7%A5%E4%BD%9C/">
+                    <i class="iconfont icon-books"></i>
+                    工作
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E7%AC%94%E8%AE%B0/">
+                    <i class="iconfont icon-notebook"></i>
+                    笔记
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -282,6 +334,148 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/06/21/Hexo-Fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/" target="_blank">
+          Hexo-Fluid主题添加相册功能
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/21/Hexo-Fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/" target="_blank">
+        <div>
+          Hexo-Fluid主题添加相册功能先找到了这篇文章：hexo的fluid主题添加瀑布流懒加载相册功能 - AIGISSS，但这篇文章没有给出自动生成包含图片尺寸等信息的json文件的代码。于是又参考了Hexo NexT 博客增加瀑布流相册页面 | 频率的方法。最后融合了一下两种方法的优点，如果你也想添加相册功能可以参考以下步骤。 新建图集页1hexo new page photos  然后需要修
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-21 04:42" pubdate>
+              2022-06-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF/%E5%BB%BA%E7%AB%99/" class="category-chain-item">建站</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Fluid/">#Fluid</a>
+            
+              <a href="/tags/%E7%9B%B8%E5%86%8C/">#相册</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/06/15/Hexo%E6%A1%86%E6%9E%B6-Fluid%E4%B8%BB%E9%A2%98-GitHubPages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank">
+          Hexo框架+Fluid主题+GitHub Pages搭建个人博客
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/15/Hexo%E6%A1%86%E6%9E%B6-Fluid%E4%B8%BB%E9%A2%98-GitHubPages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank">
+        <div>
+          Hexo框架+Fluid主题+GitHub Pages搭建个人博客博客框架：Hexoweb框架之前手搓的网页我还是不太满意，一方面还是觉得丑，另一方面如果要添加博客文章的话，还得转成HTML格式。这种东西肯定有前人已经造过轮子了，自己再造一遍就Duck不Bee了。所以我尝试了使用模版框架来搭建个人网站。目前主流的web前端框架有：Vue、React、Bootstrap等。不过感觉这些对于写博客而言
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-15 16:25" pubdate>
+              2022-06-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF/%E5%BB%BA%E7%AB%99/" class="category-chain-item">建站</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Fluid/">#Fluid</a>
+            
+              <a href="/tags/Hexo/">#Hexo</a>
+            
+              <a href="/tags/Github-Pages/">#Github Pages</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/06/14/ssos_using/" target="_blank">
           运行ssos
         </a>
@@ -422,15 +616,85 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" target="_blank">
+          HTML+CSS+FTP服务器搭建个人主页
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" target="_blank">
+        <div>
+          HTML+CSS+FTP服务器搭建个人主页起因契机偶然看到了USTC-LUG的一个关于交流会：适合个人开发者的网站开发方案 - LUG @ USTC，屁屁踢和录像可以戳这里：weekly_party&#x2F;2021.12.18_Web_Development&#x2F;。再加上认识的几位同学也在学校的FTP服务器上搭建了&#x2F;搭建过个人主页，给我一种身边人人都会写网页的恐慌，所以决定自己
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-06-08 21:24" pubdate>
+              2022-06-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF/%E5%BB%BA%E7%AB%99/" class="category-chain-item">建站</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/HTML/">#HTML</a>
+            
+              <a href="/tags/CSS/">#CSS</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank">
-          人工智能概览
+          简单了解人工智能
         </a>
       </h1>
 
       
       <a class="index-excerpt index-excerpt__noimg" href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_blank">
         <div>
-          [个人碎碎念]最近意识到应该去主动拥抱生产力。之前对机器学习、深度学习这些名词的具体区别还不甚了解，所以找了几篇文章先了解一下，顺便做了笔记分享给诸君。 主体内容都是来自于产品经理的人工智能学习库，想更深入了解的建议去原站阅读。 AI学习笔记 对话的最终目的是为了同步思维。   对话是思想从高维向低维的投影。  对话的信息来源：（包含上下文）明文+（基于某一次对话）环境模型+（基于某一个人）世界模
+          之前经常听到人工智能、机器学习、深度学习这些名词，但他们具体区别还不甚了解，所以找了几篇文章了解了一下，顺便做了笔记分享给诸君。  主体内容都是来自于产品经理的人工智能学习库，想更深入了解的建议去原站阅读。 人工智能（AI）AI的定义其实比较模糊。 AI的发展大致经历了专家系统、基于统计的方法、以深度学习为代表的机器学习方法这三波浪潮。 目前的深度学习不能实现因果推理，很可能需要开发出其他的新技
         </div>
       </a>
 

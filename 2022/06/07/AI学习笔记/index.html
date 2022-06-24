@@ -16,15 +16,15 @@
   <meta name="author" content="四维树">
   <meta name="keywords" content="">
   
-    <meta name="description" content="[个人碎碎念]最近意识到应该去主动拥抱生产力。之前对机器学习、深度学习这些名词的具体区别还不甚了解，所以找了几篇文章先了解一下，顺便做了笔记分享给诸君。 主体内容都是来自于产品经理的人工智能学习库，想更深入了解的建议去原站阅读。 AI学习笔记 对话的最终目的是为了同步思维。   对话是思想从高维向低维的投影。  对话的信息来源：（包含上下文）明文+（基于某一次对话）环境模型+（基于某一个人）世界模">
+    <meta name="description" content="之前经常听到人工智能、机器学习、深度学习这些名词，但他们具体区别还不甚了解，所以找了几篇文章了解了一下，顺便做了笔记分享给诸君。  主体内容都是来自于产品经理的人工智能学习库，想更深入了解的建议去原站阅读。 人工智能（AI）AI的定义其实比较模糊。 AI的发展大致经历了专家系统、基于统计的方法、以深度学习为代表的机器学习方法这三波浪潮。 目前的深度学习不能实现因果推理，很可能需要开发出其他的新技">
 <meta property="og:type" content="article">
-<meta property="og:title" content="人工智能概览">
+<meta property="og:title" content="简单了解人工智能">
 <meta property="og:url" content="https://4dtree.github.io/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="四维树的博客站">
-<meta property="og:description" content="[个人碎碎念]最近意识到应该去主动拥抱生产力。之前对机器学习、深度学习这些名词的具体区别还不甚了解，所以找了几篇文章先了解一下，顺便做了笔记分享给诸君。 主体内容都是来自于产品经理的人工智能学习库，想更深入了解的建议去原站阅读。 AI学习笔记 对话的最终目的是为了同步思维。   对话是思想从高维向低维的投影。  对话的信息来源：（包含上下文）明文+（基于某一次对话）环境模型+（基于某一个人）世界模">
+<meta property="og:description" content="之前经常听到人工智能、机器学习、深度学习这些名词，但他们具体区别还不甚了解，所以找了几篇文章了解了一下，顺便做了笔记分享给诸君。  主体内容都是来自于产品经理的人工智能学习库，想更深入了解的建议去原站阅读。 人工智能（AI）AI的定义其实比较模糊。 AI的发展大致经历了专家系统、基于统计的方法、以深度学习为代表的机器学习方法这三波浪潮。 目前的深度学习不能实现因果推理，很可能需要开发出其他的新技">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-07T07:43:20.856Z">
-<meta property="article:modified_time" content="2022-06-20T20:36:25.253Z">
+<meta property="article:modified_time" content="2022-06-24T11:01:55.734Z">
 <meta property="article:author" content="四维树">
 <meta property="article:tag" content="人工智能">
 <meta property="article:tag" content="机器学习">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>人工智能概览 - 四维树的博客站</title>
+  <title>简单了解人工智能 - 四维树的博客站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -138,11 +138,63 @@
           
           
           
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/">
+                    <i class="iconfont icon-abc"></i>
+                    全部
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E9%9A%8F%E7%AC%94/">
+                    <i class="iconfont icon-pen"></i>
+                    随笔
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E7%BC%96%E7%A8%8B/">
+                    <i class="iconfont icon-code"></i>
+                    编程
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E6%8A%80%E6%9C%AF/">
+                    <i class="iconfont icon-exp-fill"></i>
+                    技术
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E5%B7%A5%E4%BD%9C/">
+                    <i class="iconfont icon-books"></i>
+                    工作
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/categories/%E7%AC%94%E8%AE%B0/">
+                    <i class="iconfont icon-notebook"></i>
+                    笔记
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -222,7 +274,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="人工智能概览"></span>
+            <span id="subtitle" data-typed-text="简单了解人工智能"></span>
           
         </div>
 
@@ -245,7 +297,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          656 字
+          722 字
         
       </span>
     
@@ -256,12 +308,20 @@
         
         
         
-          6 分钟
+          7 分钟
         
       </span>
     
 
     
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
     
   </div>
 
@@ -388,10 +448,10 @@
     
       
       
-        <a href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="人工智能概览"
+        <a href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="简单了解人工智能"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">人工智能概览</span>
+          <span class="category-post">简单了解人工智能</span>
         </a>
       
     
@@ -429,10 +489,10 @@
     
       
       
-        <a href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="人工智能概览"
+        <a href="/2022/06/07/AI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="简单了解人工智能"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">人工智能概览</span>
+          <span class="category-post">简单了解人工智能</span>
         </a>
       
     
@@ -455,32 +515,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">人工智能概览</h1>
+            <h1 style="display: none">简单了解人工智能</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：21 小时前
+                    本文最后更新于：5 分钟前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h2 id="个人碎碎念"><a href="#个人碎碎念" class="headerlink" title="[个人碎碎念]"></a>[个人碎碎念]</h2><p>最近意识到应该去主动拥抱生产力。之前对机器学习、深度学习这些名词的具体区别还不甚了解，所以找了几篇文章先了解一下，顺便做了笔记分享给诸君。</p>
+              <blockquote>
+<p>之前经常听到人工智能、机器学习、深度学习这些名词，但他们具体区别还不甚了解，所以找了几篇文章了解了一下，顺便做了笔记分享给诸君。</p>
+</blockquote>
 <p>主体内容都是来自于<a target="_blank" rel="noopener" href="https://easyai.tech/">产品经理的人工智能学习库</a>，想更深入了解的建议去原站阅读。</p>
-<h1 id="AI学习笔记"><a href="#AI学习笔记" class="headerlink" title="AI学习笔记"></a>AI学习笔记</h1><blockquote>
+<h1 id="人工智能（AI）"><a href="#人工智能（AI）" class="headerlink" title="人工智能（AI）"></a>人工智能（AI）</h1><p>AI的定义其实比较模糊。</p>
+<p>AI的发展大致经历了专家系统、基于统计的方法、以深度学习为代表的机器学习方法这三波浪潮。</p>
+<p>目前的深度学习不能实现因果推理，很可能需要开发出其他的新技术。</p>
+<p>现实世界只有一部分问题是数学问题，其中只有部分是AI能解决的。</p>
+<h2 id="自然语言处理（NLP）"><a href="#自然语言处理（NLP）" class="headerlink" title="自然语言处理（NLP）"></a>自然语言处理（NLP）</h2><p>NLP&#x3D;NLU+NLG，后者目前是短板。</p>
+<blockquote>
 <p>对话的最终目的是为了同步思维。</p>
 </blockquote>
 <blockquote>
 <p>对话是思想从高维向低维的投影。</p>
 </blockquote>
-<p>对话的信息来源：（包含上下文）明文+（基于某一次对话）环境模型+（基于某一个人）世界模型</p>
-<p>目前的深度学习不能实现因果推理，很可能需要开发出其他的新技术。</p>
-<p>现实世界只有一部分问题是数学问题，其中只有部分是AI目前能解决的。</p>
-<p>目前在图像识别等方面效果比较好，而NLP则仍有许多问题不能很好解决。</p>
-<p>NLP&#x3D;NLU+NLG，后者目前是短板。</p>
-<h2 id="机器学习"><a href="#机器学习" class="headerlink" title="机器学习"></a>机器学习</h2><p>只对现象进行归纳和统计，不推理原因。</p>
+<p>对话的信息来源：（包含上下文）明文+（基于某一次对话）环境模型+（基于某一个人）世界模型。</p>
+<p>目前AI在图像识别等方面效果比较好，而NLP则仍有许多问题不能很好解决。</p>
+<h2 id="机器学习（ML）"><a href="#机器学习（ML）" class="headerlink" title="机器学习（ML）"></a>机器学习（ML）</h2><p>只对现象进行归纳和统计，不推理原因。</p>
 <h3 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h3><p>需要大量标记数据</p>
 <p>功能：分类和回归</p>
 <h3 id="非监督学习"><a href="#非监督学习" class="headerlink" title="非监督学习"></a>非监督学习</h3><p>需要大量未标记数据</p>
@@ -490,7 +554,7 @@
 <p>主要应用场景是游戏，如AlphaGo。</p>
 <p>机器人：平衡控制、推理能力、轨迹跟踪</p>
 <p>强化学习在推荐系统，对话系统，教育培训，⼴告，⾦融等领域也有一些应⽤。</p>
-<h2 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h2><p>传统机器学习依靠人工提取特征，而深度学习靠机器自动提取特征。</p>
+<h2 id="深度学习（DL）"><a href="#深度学习（DL）" class="headerlink" title="深度学习（DL）"></a>深度学习（DL）</h2><p>传统机器学习依靠人工提取特征，而深度学习靠机器自动提取特征。</p>
 <p>深度学习可以说是在传统神经⽹网络基础上的升级，约等于神经⽹络。</p>
 <h3 id="卷积神经网络（CNN）"><a href="#卷积神经网络（CNN）" class="headerlink" title="卷积神经网络（CNN）"></a>卷积神经网络（CNN）</h3><h3 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h3><h3 id="生成对抗网络（GANs）"><a href="#生成对抗网络（GANs）" class="headerlink" title="生成对抗网络（GANs）"></a>生成对抗网络（GANs）</h3><h3 id="深度强化学习（RL）"><a href="#深度强化学习（RL）" class="headerlink" title="深度强化学习（RL）"></a>深度强化学习（RL）</h3><hr>
 <p>【参考资料】：</p>
@@ -552,7 +616,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>人工智能概览</div>
+      <div>简单了解人工智能</div>
       <div>https://4dtree.github.io/2022/06/07/AI学习笔记/</div>
     </div>
     <div class="license-meta">
@@ -571,7 +635,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年6月21日</div>
+          <div>2022年6月24日</div>
         </div>
       
       <div class="license-meta-item">
@@ -600,9 +664,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/14/ssos_pipeline/" title="ssos简介">
+                      <a href="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" title="HTML+CSS+FTP服务器搭建个人主页">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ssos简介</span>
+                        <span class="hidden-mobile">HTML+CSS+FTP服务器搭建个人主页</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
