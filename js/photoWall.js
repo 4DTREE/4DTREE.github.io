@@ -74,7 +74,7 @@ const photo = {
     const [initData = {}] = data;
     const { children = [],name } = initData;
     children.forEach((item, index) => {
-      imgNameWithPattern = item.split(" ")[1];
+      imgNameWithPattern = item.slice(item.indexOf(" ")+1);
       imgName = imgNameWithPattern.split("/").pop();
       imageSize = item.split(" ")[0];
       imageX = imageSize.split(".")[0];
@@ -115,7 +115,7 @@ const photo = {
       const { children,name } = selectedData;
       let li = "";
       children.forEach((item, index) => {
-        imgNameWithPattern = item.split(" ")[1];
+        imgNameWithPattern = item.slice(item.indexOf(" ")+1);
         imgName = imgNameWithPattern.split("/").pop();
         imageSize = item.split(" ")[0];
         imageX = imageSize.split(".")[0];
