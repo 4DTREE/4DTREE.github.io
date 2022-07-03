@@ -16,15 +16,15 @@
   <meta name="author" content="四维树">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Hexo-Fluid主题添加相册功能先找到了这篇文章：hexo的fluid主题添加瀑布流懒加载相册功能 - AIGISSS，但这篇文章没有给出自动生成包含图片尺寸等信息的json文件的代码。于是又参考了Hexo NexT 博客增加瀑布流相册页面 | 频率的方法。最后融合了一下两种方法的优点，如果你也想添加相册功能可以参考以下步骤。 新建图集页1hexo new page photos  然后需要修">
+    <meta name="description" content="Hexo-Fluid主题添加相册功能先找到了这篇文章：hexo的fluid主题添加瀑布流懒加载相册功能 - AIGISSS，但这篇文章没有给出自动生成包含图片尺寸等信息的json文件的代码。于是又参考了Hexo NexT 博客增加瀑布流相册页面 | 频率的方法。最后融合了一下两种方法的优点，如果你也想添加相册功能可以参考以下步骤。 新建图集页博客目录打开终端，输入： 1hexo new page">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo-Fluid主题添加相册功能">
 <meta property="og:url" content="https://4dtree.github.io/2022/06/21/Hexo-Fluid%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/index.html">
 <meta property="og:site_name" content="四维树的博客站">
-<meta property="og:description" content="Hexo-Fluid主题添加相册功能先找到了这篇文章：hexo的fluid主题添加瀑布流懒加载相册功能 - AIGISSS，但这篇文章没有给出自动生成包含图片尺寸等信息的json文件的代码。于是又参考了Hexo NexT 博客增加瀑布流相册页面 | 频率的方法。最后融合了一下两种方法的优点，如果你也想添加相册功能可以参考以下步骤。 新建图集页1hexo new page photos  然后需要修">
+<meta property="og:description" content="Hexo-Fluid主题添加相册功能先找到了这篇文章：hexo的fluid主题添加瀑布流懒加载相册功能 - AIGISSS，但这篇文章没有给出自动生成包含图片尺寸等信息的json文件的代码。于是又参考了Hexo NexT 博客增加瀑布流相册页面 | 频率的方法。最后融合了一下两种方法的优点，如果你也想添加相册功能可以参考以下步骤。 新建图集页博客目录打开终端，输入： 1hexo new page">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-06-20T20:42:47.000Z">
-<meta property="article:modified_time" content="2022-06-26T11:07:23.994Z">
+<meta property="article:modified_time" content="2022-07-03T19:34:05.516Z">
 <meta property="article:author" content="四维树">
 <meta property="article:tag" content="Fluid">
 <meta property="article:tag" content="相册">
@@ -518,7 +518,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：1 天前
+                    本文最后更新于：1 小时前
                   
                 
               </p>
@@ -526,7 +526,8 @@
             <div class="markdown-body">
               
               <h1 id="Hexo-Fluid主题添加相册功能"><a href="#Hexo-Fluid主题添加相册功能" class="headerlink" title="Hexo-Fluid主题添加相册功能"></a>Hexo-Fluid主题添加相册功能</h1><p>先找到了这篇文章：<a target="_blank" rel="noopener" href="https://aigisss.com/blog/posts/798ba833.html">hexo的fluid主题添加瀑布流懒加载相册功能 - AIGISSS</a>，但这篇文章没有给出自动生成包含图片尺寸等信息的json文件的代码。于是又参考了<a target="_blank" rel="noopener" href="https://pinlyu.com/post/31/">Hexo NexT 博客增加瀑布流相册页面 | 频率</a>的方法。最后融合了一下两种方法的优点，如果你也想添加相册功能可以参考以下步骤。</p>
-<h2 id="新建图集页"><a href="#新建图集页" class="headerlink" title="新建图集页"></a>新建图集页</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo new page photos<br></code></pre></td></tr></table></figure>
+<h2 id="新建图集页"><a href="#新建图集页" class="headerlink" title="新建图集页"></a>新建图集页</h2><p>博客目录打开终端，输入：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">hexo new page photos<br></code></pre></td></tr></table></figure>
 
 <p>然后需要修改主题配置，在menu下面添加这一行：</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">menu:</span><br>  <span class="hljs-bullet">-</span> &#123; <span class="hljs-attr">key:</span> <span class="hljs-string">&quot;photos&quot;</span>, <span class="hljs-attr">link:</span> <span class="hljs-string">&quot;/photos/&quot;</span>, <span class="hljs-attr">icon:</span> <span class="hljs-string">&quot;iconfont icon-images&quot;</span> &#125;<br></code></pre></td></tr></table></figure>
@@ -626,7 +627,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年6月26日</div>
+          <div>2022年7月4日</div>
         </div>
       
       <div class="license-meta-item">
