@@ -16,26 +16,26 @@
   <meta name="author" content="四维树">
   <meta name="keywords" content="">
   
-    <meta name="description" content="之前经常听到人工智能、机器学习、深度学习这些名词，但他们具体区别还不甚了解，所以找了几篇文章了解了一下，顺便做了笔记分享给诸君。  主体内容都是来自于产品经理的人工智能学习库，只记了个大概。更推荐直接去原站阅读以便深入理解。 人工智能（AI）AI的定义其实比较模糊。 AI的发展大致经历了专家系统、基于统计的方法、以深度学习为代表的机器学习方法这三波浪潮。 目前的深度学习不能实现因果推理，很可能需">
+    <meta name="description" content="Snowflaker 这个小程序是我2018年用python3写的一个带GUI的小程序，可以把输入的文字内容作为随机数种子生成雪花状图案。我把全班同学的名字都存在一个文本文件里，毕业典礼当天，在教室的电脑上像ppt一样播放了用每个人的名字生成的雪花。  GitHub仓库 运行环境需要安装Python3.  基于python3自带的tkinter绘制GUI，可在Windows, Mac OS, Li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单了解人工智能">
-<meta property="og:url" content="https://4dtree.github.io/2022/06/07/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/index.html">
+<meta property="og:title" content="程序生成雪花图案:Snowflaker">
+<meta property="og:url" content="https://4dtree.github.io/2018/06/03/Snowflaker/index.html">
 <meta property="og:site_name" content="四维树的博客站">
-<meta property="og:description" content="之前经常听到人工智能、机器学习、深度学习这些名词，但他们具体区别还不甚了解，所以找了几篇文章了解了一下，顺便做了笔记分享给诸君。  主体内容都是来自于产品经理的人工智能学习库，只记了个大概。更推荐直接去原站阅读以便深入理解。 人工智能（AI）AI的定义其实比较模糊。 AI的发展大致经历了专家系统、基于统计的方法、以深度学习为代表的机器学习方法这三波浪潮。 目前的深度学习不能实现因果推理，很可能需">
+<meta property="og:description" content="Snowflaker 这个小程序是我2018年用python3写的一个带GUI的小程序，可以把输入的文字内容作为随机数种子生成雪花状图案。我把全班同学的名字都存在一个文本文件里，毕业典礼当天，在教室的电脑上像ppt一样播放了用每个人的名字生成的雪花。  GitHub仓库 运行环境需要安装Python3.  基于python3自带的tkinter绘制GUI，可在Windows, Mac OS, Li">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-07T07:43:20.856Z">
-<meta property="article:modified_time" content="2022-06-27T13:12:19.305Z">
+<meta property="og:image" content="https://4dtree.github.io/img/SnowflakerDemo.png">
+<meta property="article:published_time" content="2018-06-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-04T11:16:40.460Z">
 <meta property="article:author" content="四维树">
-<meta property="article:tag" content="人工智能">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="深度学习">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://4dtree.github.io/img/SnowflakerDemo.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>简单了解人工智能 - 四维树的博客站</title>
+  <title>程序生成雪花图案:Snowflaker - 四维树的博客站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -268,13 +268,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/wallhaven-ne7lr8.webp') no-repeat center center; background-size: cover;">
+     style="background: url('/img/SnowflakerDemo.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="简单了解人工智能"></span>
+            <span id="subtitle" data-typed-text="程序生成雪花图案:Snowflaker"></span>
           
         </div>
 
@@ -285,8 +285,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-07 15:43" pubdate>
-          2022年6月7日 下午
+        <time datetime="2018-06-03 00:00" pubdate>
+          2018年6月3日 凌晨
         </time>
       </span>
     
@@ -297,7 +297,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          875 字
+          521 字
         
       </span>
     
@@ -308,7 +308,7 @@
         
         
         
-          2 分钟
+          1 分钟
         
       </span>
     
@@ -365,17 +365,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="笔记"
-        id="heading-7051dc52c184c205e39aa54b4664ae9b" role="tab" data-toggle="collapse" href="#collapse-7051dc52c184c205e39aa54b4664ae9b"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="编程"
+        id="heading-41282bf95e43c64d579757573a03cdde" role="tab" data-toggle="collapse" href="#collapse-41282bf95e43c64d579757573a03cdde"
         aria-expanded="true"
       >
-        笔记
+        编程
         <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-7051dc52c184c205e39aa54b4664ae9b"
-           role="tabpanel" aria-labelledby="heading-7051dc52c184c205e39aa54b4664ae9b">
+      <div class="category-collapse collapse show" id="collapse-41282bf95e43c64d579757573a03cdde"
+           role="tabpanel" aria-labelledby="heading-41282bf95e43c64d579757573a03cdde">
         
         
           
@@ -386,60 +386,23 @@
   </div>
 
           
-  
-    
-    
-    
-    <div class="category-sub row nomargin-x">
-      <a class="category-subitem collapsed
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="听讲座"
-        id="heading-999477cb390d148e88f8ecaefd06b33e" role="tab" data-toggle="collapse" href="#collapse-999477cb390d148e88f8ecaefd06b33e"
-        aria-expanded="false"
-      >
-        听讲座
-        <span class="list-group-count">(1)</span>
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      
-      <div class="category-collapse collapse " id="collapse-999477cb390d148e88f8ecaefd06b33e"
-           role="tabpanel" aria-labelledby="heading-999477cb390d148e88f8ecaefd06b33e">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2022/05/26/%E5%A4%A9%E9%83%BD%E8%AE%BA%E5%9D%9B%E7%AC%AC6%E6%9C%9F/" title="天都论坛 第6期 笔记"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">天都论坛 第6期 笔记</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
   
     
     
     
     <div class="category-sub row nomargin-x">
       <a class="category-subitem 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="知识总结"
-        id="heading-47c908df27ca9dd097552797071d146e" role="tab" data-toggle="collapse" href="#collapse-47c908df27ca9dd097552797071d146e"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="python"
+        id="heading-23eeeb4347bdd26bfc6b7ee9a3b755dd" role="tab" data-toggle="collapse" href="#collapse-23eeeb4347bdd26bfc6b7ee9a3b755dd"
         aria-expanded="true"
       >
-        知识总结
-        <span class="list-group-count">(1)</span>
+        python
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-47c908df27ca9dd097552797071d146e"
-           role="tabpanel" aria-labelledby="heading-47c908df27ca9dd097552797071d146e">
+      <div class="category-collapse collapse show" id="collapse-23eeeb4347bdd26bfc6b7ee9a3b755dd"
+           role="tabpanel" aria-labelledby="heading-23eeeb4347bdd26bfc6b7ee9a3b755dd">
         
         
           
@@ -448,10 +411,19 @@
     
       
       
-        <a href="/2022/06/07/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" title="简单了解人工智能"
+        <a href="/2017/07/12/HiOnion/" title="一款python小游戏：HiOnion"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一款python小游戏：HiOnion</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/06/03/Snowflaker/" title="程序生成雪花图案:Snowflaker"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">简单了解人工智能</span>
+          <span class="category-post">程序生成雪花图案:Snowflaker</span>
         </a>
       
     
@@ -470,17 +442,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="知识总结"
-        id="heading-47c908df27ca9dd097552797071d146e" role="tab" data-toggle="collapse" href="#collapse-47c908df27ca9dd097552797071d146e"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="python"
+        id="heading-23eeeb4347bdd26bfc6b7ee9a3b755dd" role="tab" data-toggle="collapse" href="#collapse-23eeeb4347bdd26bfc6b7ee9a3b755dd"
         aria-expanded="true"
       >
-        知识总结
-        <span class="list-group-count">(1)</span>
+        python
+        <span class="list-group-count">(2)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-47c908df27ca9dd097552797071d146e"
-           role="tabpanel" aria-labelledby="heading-47c908df27ca9dd097552797071d146e">
+      <div class="category-collapse collapse show" id="collapse-23eeeb4347bdd26bfc6b7ee9a3b755dd"
+           role="tabpanel" aria-labelledby="heading-23eeeb4347bdd26bfc6b7ee9a3b755dd">
         
         
           
@@ -489,10 +461,19 @@
     
       
       
-        <a href="/2022/06/07/%E7%AE%80%E5%8D%95%E4%BA%86%E8%A7%A3%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" title="简单了解人工智能"
+        <a href="/2017/07/12/HiOnion/" title="一款python小游戏：HiOnion"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">一款python小游戏：HiOnion</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2018/06/03/Snowflaker/" title="程序生成雪花图案:Snowflaker"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">简单了解人工智能</span>
+          <span class="category-post">程序生成雪花图案:Snowflaker</span>
         </a>
       
     
@@ -515,56 +496,45 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">简单了解人工智能</h1>
+            <h1 style="display: none">程序生成雪花图案:Snowflaker</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：6 天前
+                    本文最后更新于：2 天前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <blockquote>
-<p>之前经常听到人工智能、机器学习、深度学习这些名词，但他们具体区别还不甚了解，所以找了几篇文章了解了一下，顺便做了笔记分享给诸君。</p>
+              <h1 id="Snowflaker"><a href="#Snowflaker" class="headerlink" title="Snowflaker"></a>Snowflaker</h1><blockquote>
+<p>这个小程序是我2018年用python3写的一个带GUI的小程序，可以把输入的文字内容作为随机数种子生成雪花状图案。我把全班同学的名字都存在一个文本文件里，毕业典礼当天，在教室的电脑上像ppt一样播放了用每个人的名字生成的雪花。</p>
 </blockquote>
-<p>主体内容都是来自于<a target="_blank" rel="noopener" href="https://easyai.tech/">产品经理的人工智能学习库</a>，只记了个大概。更推荐直接去原站阅读以便深入理解。</p>
-<h1 id="人工智能（AI）"><a href="#人工智能（AI）" class="headerlink" title="人工智能（AI）"></a>人工智能（AI）</h1><p>AI的定义其实比较模糊。</p>
-<p>AI的发展大致经历了专家系统、基于统计的方法、以深度学习为代表的机器学习方法这三波浪潮。</p>
-<p>目前的深度学习不能实现因果推理，很可能需要开发出其他的新技术。</p>
-<p>现实世界只有一部分问题是数学问题，其中只有部分是AI能解决的。</p>
-<h2 id="机器学习（ML）"><a href="#机器学习（ML）" class="headerlink" title="机器学习（ML）"></a>机器学习（ML）</h2><p>只对现象进行归纳和统计，不推理原因。</p>
-<h3 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h3><p>需要大量标记数据</p>
-<p>功能：分类和回归</p>
-<h3 id="非监督学习"><a href="#非监督学习" class="headerlink" title="非监督学习"></a>非监督学习</h3><p>需要大量未标记数据</p>
-<p>功能：聚类和降维</p>
-<p>图像生成模型：生成对抗网络（GAN）</p>
-<h3 id="强化学习"><a href="#强化学习" class="headerlink" title="强化学习"></a>强化学习</h3><p>不需要大量数据，通过不断尝试来训练。</p>
-<p>主要应用场景是游戏，如AlphaGo。</p>
-<p>机器人：平衡控制、推理能力、轨迹跟踪</p>
-<p>强化学习在推荐系统，对话系统，教育培训，⼴告，⾦融等领域也有一些应⽤。</p>
-<h2 id="深度学习（DL）"><a href="#深度学习（DL）" class="headerlink" title="深度学习（DL）"></a>深度学习（DL）</h2><p>传统机器学习依靠人工提取特征，而深度学习靠机器自动提取特征。</p>
-<p>深度学习可以说是在传统神经网络基础上的升级，约等于神经⽹络。</p>
-<h3 id="卷积神经网络（CNN）"><a href="#卷积神经网络（CNN）" class="headerlink" title="卷积神经网络（CNN）"></a>卷积神经网络（CNN）</h3><p>擅长图像处理，降维成小数据量，提取图片关键特征。</p>
-<h3 id="循环神经网络（RNN）"><a href="#循环神经网络（RNN）" class="headerlink" title="循环神经网络（RNN）"></a>循环神经网络（RNN）</h3><p>处理序列数据，NLP就是一个典型应用场景。RNN常用于语音识别、机器翻译、文本生成等，但短期记忆影响要超过长期记忆（即便很重要），故产生了许多变种如LSTM、GRU等。</p>
-<h3 id="生成对抗网络（GANs）"><a href="#生成对抗网络（GANs）" class="headerlink" title="生成对抗网络（GANs）"></a>生成对抗网络（GANs）</h3><p>一种无监督算法，生成器生成数据试图骗过判别器，而判别器试图判别出真实数据。</p>
-<h3 id="强化学习-1"><a href="#强化学习-1" class="headerlink" title="强化学习"></a>强化学习</h3><p>前面提过了。</p>
-<h2 id="自然语言处理（NLP）"><a href="#自然语言处理（NLP）" class="headerlink" title="自然语言处理（NLP）"></a>自然语言处理（NLP）</h2><p>NLP&#x3D;NLU+NLG，后者目前是短板。</p>
-<blockquote>
-<p>对话的最终目的是为了同步思维。</p>
-</blockquote>
-<blockquote>
-<p>对话是思想从高维向低维的投影。</p>
-</blockquote>
-<p>对话的信息来源：（包含上下文）明文+（基于某一次对话）环境模型+（基于某一个人）世界模型。</p>
-<p>目前AI在图像识别等方面效果比较好，而NLP则仍有许多问题未被很好解决。</p>
-<hr>
-<p>【参考资料】：</p>
-<p><a target="_blank" rel="noopener" href="https://easyai.tech/">产品经理的人工智能学习库</a></p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg5NDIwODgzMA==&mid=2247484378&idx=1&sn=1bc51bf52c3c2643d70fcfb91002c36d&source=41#wechat_redirect">为什么现在的人工智能助理都像人工智障？</a></p>
-<p><a target="_blank" rel="noopener" href="https://easyai.tech/blog/ai-yuyin-jiaohu-aipm/">人工智障 2 : 你看到的AI与智能无关</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/4DTREE/Snowflaker">GitHub仓库</a></p>
+<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><p>需要安装<code>Python3</code>. </p>
+<p>基于python3自带的<code>tkinter</code>绘制GUI，可在<strong>Windows, Mac OS, Linux</strong>平台运行.</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><ol>
+<li><p>打开</p>
+<p>双击运行 <code>Snowflaker.pyw</code>.</p>
+<p><strong>或</strong></p>
+<p>进入项目目录下，在终端输入:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 Snowflaker.pyw<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>用法</p>
+<ul>
+<li><p>在文本框内输入随机数种子，程序自动给出生成的雪花状图案。</p>
+</li>
+<li><p>点击右下角的按钮，则会根据<code>list.txt</code>逐行生成图案并显示。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h2><p>每次摇一串随机数，生成一条折线段，我这里设计了三种类型的折线段:</p>
+<p><img src="https://github.com/4DTREE/Snowflaker/blob/master/hi.png?raw=true" srcset="/img/loadingIMG.gif" lazyload></p>
+<p>设计的时候图方便用的是raw这列的左边，实际图形要经过一个线性变换到LT这一列的形状，再经过旋转、反射，最终形成最右边一列共12组折线段（type0有重叠所以看起来像是6组）。</p>
+<p>然后重复上述步骤数次，最后再补上3条长度适当的主干：y&#x3D;0，y&#x3D;(√3)*x，y&#x3D;(-√3)*x，一个雪花图案就形成啦~</p>
+<p><img src="https://github.com/4DTREE/Snowflaker/blob/master/illustration.png?raw=true" srcset="/img/loadingIMG.gif" lazyload></p>
 
               
             </div>
@@ -582,12 +552,12 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%AC%94%E8%AE%B0/" class="category-chain-item">笔记</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B/" class="category-chain-item">编程</a>
   
   
     <span>></span>
     
-  <a href="/categories/%E7%AC%94%E8%AE%B0/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/" class="category-chain-item">知识总结</a>
+  <a href="/categories/%E7%BC%96%E7%A8%8B/python/" class="category-chain-item">python</a>
   
   
 
@@ -604,11 +574,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">#人工智能</a>
-      
-        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">#机器学习</a>
-      
-        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>
+        <a href="/tags/python/">#python</a>
       
     </div>
   
@@ -620,8 +586,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>简单了解人工智能</div>
-      <div>https://4dtree.github.io/2022/06/07/简单了解人工智能/</div>
+      <div>程序生成雪花图案:Snowflaker</div>
+      <div>https://4dtree.github.io/2018/06/03/Snowflaker/</div>
     </div>
     <div class="license-meta">
       
@@ -633,13 +599,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月7日</div>
+          <div>2018年6月3日</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年6月27日</div>
+          <div>2022年8月4日</div>
         </div>
       
       <div class="license-meta-item">
@@ -668,9 +634,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/06/08/HTML-CSS-FTP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E4%B8%BB%E9%A1%B5/" title="HTML+CSS+FTP服务器搭建个人主页">
+                      <a href="/2018/12/07/%E9%9B%A8%E4%BA%91%E4%B8%8B%E7%9A%84%E9%9A%8F%E6%83%B3/" title="雨云下的随想">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">HTML+CSS+FTP服务器搭建个人主页</span>
+                        <span class="hidden-mobile">雨云下的随想</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -678,8 +644,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/26/%E5%A4%A9%E9%83%BD%E8%AE%BA%E5%9D%9B%E7%AC%AC6%E6%9C%9F/" title="天都论坛 第6期 笔记">
-                        <span class="hidden-mobile">天都论坛 第6期 笔记</span>
+                      <a href="/2018/05/29/%E4%BA%8B%E9%9B%A8/" title="事雨">
+                        <span class="hidden-mobile">事雨</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
